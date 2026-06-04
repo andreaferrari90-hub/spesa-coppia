@@ -18,18 +18,17 @@
   .header{background:var(--text);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
   .header-title{font-family:'Playfair Display',serif;font-size:20px;color:#fff;}
   .header-title span{color:#e8a87c;}
-  .header-right{display:flex;align-items:center;gap:12px;}
-  .sync-btn{background:rgba(255,255,255,0.1);border:none;color:white;border-radius:8px;padding:6px 12px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:5px;transition:background 0.15s;}
-  .sync-btn:hover{background:rgba(255,255,255,0.2);}
-  .sync-dot{width:7px;height:7px;border-radius:50%;background:#7ecf95;flex-shrink:0;}
+  .header-right{display:flex;align-items:center;gap:10px;}
+  .sync-dot{width:8px;height:8px;border-radius:50%;background:#7ecf95;flex-shrink:0;}
   .sync-dot.error{background:#e87c7c;}
   .sync-dot.syncing{background:#e8a87c;animation:pulse 1s infinite;}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+  .sync-label{font-size:11px;color:rgba(255,255,255,0.6);font-weight:600;}
   .header-budget .label{font-size:10px;color:#a89580;letter-spacing:1px;text-transform:uppercase;text-align:right;}
-  .header-budget .amount{font-size:18px;font-weight:600;color:#fff;text-align:right;}
+  .header-budget .amount{font-size:18px;font-weight:700;color:#fff;text-align:right;}
   .header-budget .amount.over{color:#e87c7c;}
-  .tabs{display:flex;background:var(--surface);border-bottom:2px solid var(--border);padding:0 16px;}
-  .tab{padding:13px 18px 11px;font-size:13px;font-weight:600;color:var(--text3);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all 0.2s;display:flex;align-items:center;gap:5px;}
+  .tabs{display:flex;background:var(--surface);border-bottom:2px solid var(--border);padding:0 12px;}
+  .tab{padding:13px 14px 11px;font-size:13px;font-weight:600;color:var(--text3);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all 0.2s;display:flex;align-items:center;gap:5px;white-space:nowrap;}
   .tab.active{color:var(--accent);border-bottom-color:var(--accent);}
   .tab .badge{background:var(--accent);color:white;border-radius:10px;font-size:10px;padding:1px 6px;font-weight:700;}
   .content{padding:16px;max-width:640px;margin:0 auto;}
@@ -58,7 +57,8 @@
   .input-field{width:100%;border:1.5px solid var(--border);border-radius:10px;padding:9px 13px;font-size:14px;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);transition:border-color 0.15s;}
   .input-field:focus{outline:none;border-color:var(--accent);background:white;}
   .btn-add{width:100%;padding:11px;background:var(--accent);color:white;border:none;border-radius:10px;font-size:14px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all 0.15s;}
-  .btn-add:hover{background:#b34430;transform:translateY(-1px);}
+  .btn-add:hover{background:#b34430;}
+  .btn-add:disabled{background:#ccc;cursor:not-allowed;transform:none;}
   .cat-scroll{display:flex;gap:7px;overflow-x:auto;padding-bottom:4px;margin-bottom:14px;scrollbar-width:none;}
   .cat-scroll::-webkit-scrollbar{display:none;}
   .cat-chip{padding:5px 13px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;border:1.5px solid var(--border);background:white;color:var(--text2);transition:all 0.15s;}
@@ -79,6 +79,33 @@
   .item-price{font-size:15px;font-weight:700;color:var(--accent);font-family:'Playfair Display',serif;flex-shrink:0;}
   .item-del{width:28px;height:28px;border-radius:8px;border:none;background:#fdecea;color:var(--accent);cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.15s;flex-shrink:0;}
   .item-card:hover .item-del{opacity:1;}
+
+  /* SCONTRINO */
+  .scontrino-card{background:linear-gradient(135deg,#1a1410,#3d2a1a);border-radius:var(--radius);padding:18px;margin-bottom:16px;color:white;border:1px solid var(--border);}
+  .scontrino-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#e8a87c;margin-bottom:12px;}
+  .scontrino-area{border:2px dashed rgba(255,255,255,0.2);border-radius:12px;padding:24px;text-align:center;cursor:pointer;transition:all 0.2s;position:relative;}
+  .scontrino-area:hover{border-color:var(--accent2);background:rgba(255,255,255,0.05);}
+  .scontrino-area input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+  .scontrino-preview{width:100%;max-height:200px;object-fit:contain;border-radius:8px;margin-bottom:12px;display:none;}
+  .scontrino-emoji{font-size:32px;margin-bottom:8px;}
+  .scontrino-text{font-size:13px;color:rgba(255,255,255,0.6);}
+  .scontrino-text strong{color:white;}
+  .btn-scan{width:100%;padding:12px;background:var(--accent);color:white;border:none;border-radius:10px;font-size:14px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;margin-top:12px;display:none;transition:all 0.15s;}
+  .btn-scan:hover{background:#b34430;}
+  .btn-scan:disabled{background:#666;cursor:not-allowed;}
+  .scan-result{margin-top:12px;display:none;}
+  .scan-result-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#e8a87c;margin-bottom:8px;}
+  .scan-item{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:rgba(255,255,255,0.08);border-radius:8px;margin-bottom:5px;}
+  .scan-item-name{font-size:13px;font-weight:500;}
+  .scan-item-price{font-size:13px;font-weight:700;color:#e8a87c;}
+  .btn-import{width:100%;padding:11px;background:var(--green);color:white;border:none;border-radius:10px;font-size:14px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;margin-top:10px;transition:all 0.15s;}
+  .btn-import:hover{background:#3a6147;}
+
+  /* API KEY INPUT */
+  .apikey-card{background:var(--surface);border-radius:var(--radius);padding:15px;margin-bottom:16px;border:2px dashed var(--border);}
+  .apikey-card .add-form-title{margin-bottom:8px;}
+  .apikey-note{font-size:12px;color:var(--text3);margin-bottom:10px;line-height:1.5;}
+
   .history-group{margin-bottom:22px;}
   .history-date{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:9px;display:flex;justify-content:space-between;}
   .history-item{background:white;border-radius:11px;padding:11px 15px;margin-bottom:5px;border:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
@@ -97,25 +124,29 @@
   .empty{text-align:center;padding:36px 20px;color:var(--text3);}
   .empty .emoji{font-size:38px;margin-bottom:11px;}
   .empty p{font-size:14px;}
-  .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--text);color:white;padding:10px 20px;border-radius:20px;font-size:13px;font-weight:600;z-index:9999;transition:transform 0.3s;pointer-events:none;white-space:nowrap;}
+  .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--text);color:white;padding:10px 20px;border-radius:20px;font-size:13px;font-weight:600;z-index:9999;transition:transform 0.3s;pointer-events:none;white-space:nowrap;max-width:90vw;text-align:center;}
   .toast.show{transform:translateX(-50%) translateY(0);}
   .panel{display:none;}.panel.active{display:block;}
   .btns-row{display:flex;gap:8px;margin-top:4px;}
-  .offline-banner{background:#e8a87c;color:#1a1410;text-align:center;padding:7px;font-size:12px;font-weight:600;display:none;}
-  .offline-banner.show{display:block;}
+  .loading-overlay{position:fixed;inset:0;background:rgba(26,20,16,0.7);z-index:999;display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px;}
+  .loading-overlay.show{display:flex;}
+  .loading-spinner{width:48px;height:48px;border:4px solid rgba(255,255,255,0.2);border-top-color:#e8a87c;border-radius:50%;animation:spin 0.8s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .loading-text{color:white;font-size:15px;font-weight:600;}
 </style>
 </head>
 <body>
 
-<div class="offline-banner" id="offlineBanner">⚠️ Modalità offline — riprova tra poco</div>
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loading-spinner"></div>
+  <div class="loading-text" id="loadingText">Analisi scontrino...</div>
+</div>
 
 <div class="header">
   <div class="header-title">La Nostra <span>Spesa</span></div>
   <div class="header-right">
-    <button class="sync-btn" id="syncBtn" onclick="syncNow()">
-      <div class="sync-dot" id="syncDot"></div>
-      <span id="syncLabel">Sync</span>
-    </button>
+    <div class="sync-dot" id="syncDot"></div>
+    <span class="sync-label" id="syncLabel">...</span>
     <div class="header-budget">
       <div class="label">Questo mese</div>
       <div class="amount" id="headerAmt">€0,00</div>
@@ -125,11 +156,14 @@
 
 <div class="tabs">
   <div class="tab active" id="tab-lista" onclick="switchTab('lista')">📋 Lista <span class="badge" id="badgeLista">0</span></div>
+  <div class="tab" id="tab-scontrino" onclick="switchTab('scontrino')">📷 Scontrino</div>
   <div class="tab" id="tab-storico" onclick="switchTab('storico')">📜 Storico</div>
   <div class="tab" id="tab-stats" onclick="switchTab('stats')">📊 Stats</div>
 </div>
 
 <div class="content">
+
+  <!-- LISTA -->
   <div class="panel active" id="panel-lista">
     <div class="budget-card">
       <div class="budget-row">
@@ -203,165 +237,347 @@
     <div class="btns-row" id="bottomBtns"></div>
   </div>
 
+  <!-- SCONTRINO -->
+  <div class="panel" id="panel-scontrino">
+    <div class="apikey-card">
+      <div class="add-form-title">🔑 API Key Anthropic</div>
+      <div class="apikey-note">Necessaria per analizzare gli scontrini con AI. La chiave viene salvata solo sul tuo dispositivo.<br>Ottienila su <strong>console.anthropic.com</strong></div>
+      <div style="display:flex;gap:8px;">
+        <input type="password" class="input-field" id="apiKeyInput" placeholder="sk-ant-...">
+        <button class="btn-add" style="width:auto;padding:9px 16px;flex-shrink:0" onclick="saveApiKey()">Salva</button>
+      </div>
+      <div id="apiKeyStatus" style="font-size:12px;color:var(--green);margin-top:6px;display:none;">✓ API key salvata</div>
+    </div>
+
+    <div class="scontrino-card">
+      <div class="scontrino-title">📷 Scansiona scontrino</div>
+      <div class="scontrino-area" id="scontrinoArea">
+        <input type="file" accept="image/*" capture="environment" id="scontrinoInput" onchange="onImageSelected(event)">
+        <img id="scontrinoPreview" class="scontrino-preview">
+        <div id="scontrinoPlaceholder">
+          <div class="scontrino-emoji">🧾</div>
+          <div class="scontrino-text"><strong>Tocca per scattare foto</strong><br>o carica un'immagine</div>
+        </div>
+      </div>
+      <button class="btn-scan" id="btnScan" onclick="analizzaScontrino()">🤖 Analizza con AI</button>
+      <div class="scan-result" id="scanResult">
+        <div class="scan-result-title">Articoli trovati</div>
+        <div id="scanItems"></div>
+        <button class="btn-import" onclick="importaScontrino()">✅ Aggiungi allo storico</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STORICO -->
   <div class="panel" id="panel-storico"><div id="storicoContent"></div></div>
+
+  <!-- STATS -->
   <div class="panel" id="panel-stats"><div id="statsContent"></div></div>
+
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwnQ_lZyZo4iZCncAGC4QZ8OpJfOM-DY5IjXeVHaOMyjNG7GMuQHQT5ZezvpAVJbnEd/exec';
+// --- CONFIG ---
+const SB_URL = 'https://zelmmjvluhpcvgbcltxy.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InplbG1tanZsdWhwY3ZnYmNsdHh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2MDE3ODgsImV4cCI6MjA5NjE3Nzc4OH0.GocYM_2GP5-RXANrs-FniMm-cqU0sP_sgndmsQOTNB8';
+const TABLE = 'spesa';
 
 let state = { budget:0, items:[], history:[], filterCat:'Tutte' };
-let syncTimeout = null;
+let scannedItems = [];
+let currentImageBase64 = null;
 
-function loadLocal() {
-  try { const s=localStorage.getItem('spesa_v3'); if(s) state={...state,...JSON.parse(s)}; } catch(e) {}
+// --- API KEY ---
+function saveApiKey() {
+  const k = document.getElementById('apiKeyInput').value.trim();
+  if (!k) return;
+  localStorage.setItem('anthropic_key', k);
+  document.getElementById('apiKeyInput').value = '';
+  document.getElementById('apiKeyStatus').style.display = 'block';
+  showToast('API key salvata!');
 }
-function saveLocal() {
-  try { localStorage.setItem('spesa_v3',JSON.stringify(state)); } catch(e) {}
+function getApiKey() { return localStorage.getItem('anthropic_key') || ''; }
+function initApiKeyUI() {
+  if (getApiKey()) document.getElementById('apiKeyStatus').style.display = 'block';
 }
 
-// --- SYNC via GET only (no CORS issues) ---
-async function fetchFromSheets() {
-  setSyncStatus('syncing','Carico...');
+// --- SUPABASE HELPERS ---
+async function sbGet(filter='') {
+  const res = await fetch(`${SB_URL}/rest/v1/${TABLE}?${filter}&order=data.asc`, {
+    headers: { 'apikey': SB_KEY, 'Authorization': `Bearer ${SB_KEY}` }
+  });
+  if (!res.ok) throw new Error('GET failed');
+  return res.json();
+}
+
+async function sbDelete(filter) {
+  const res = await fetch(`${SB_URL}/rest/v1/${TABLE}?${filter}`, {
+    method: 'DELETE',
+    headers: { 'apikey': SB_KEY, 'Authorization': `Bearer ${SB_KEY}`, 'Content-Type': 'application/json' }
+  });
+  if (!res.ok) throw new Error('DELETE failed');
+}
+
+async function sbInsert(rows) {
+  const res = await fetch(`${SB_URL}/rest/v1/${TABLE}`, {
+    method: 'POST',
+    headers: { 'apikey': SB_KEY, 'Authorization': `Bearer ${SB_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+    body: JSON.stringify(rows)
+  });
+  if (!res.ok) throw new Error('INSERT failed');
+}
+
+async function sbUpdate(id, data) {
+  const res = await fetch(`${SB_URL}/rest/v1/${TABLE}?id=eq.${id}`, {
+    method: 'PATCH',
+    headers: { 'apikey': SB_KEY, 'Authorization': `Bearer ${SB_KEY}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+  if (!res.ok) throw new Error('UPDATE failed');
+}
+
+// --- SYNC ---
+async function loadFromDB() {
+  setSyncStatus('syncing', 'Carico...');
   try {
-    const res = await fetch(SCRIPT_URL + '?t=' + Date.now(), {method:'GET'});
-    if (!res.ok) throw new Error('HTTP '+res.status);
-    const rows = await res.json();
-    const items=[], histMap={};
+    const rows = await sbGet();
+    const items = [], histMap = {};
     rows.forEach(r => {
-      if (!r.tipo) return;
-      if (r.tipo==='item') {
-        items.push({id:r.id,name:r.nome,qty:r.quantita,price:parseFloat(r.prezzo)||0,cat:r.categoria,who:r.chi,checked:r.spuntato==='true'||r.spuntato===true,date:r.data});
-      } else if (r.tipo==='history') {
-        const sid=String(r.id).split('_')[0];
-        if(!histMap[sid]) histMap[sid]={id:sid,date:r.data,items:[],total:0};
-        histMap[sid].items.push({id:r.id,name:r.nome,qty:r.quantita,price:parseFloat(r.prezzo)||0,cat:r.categoria,who:r.chi});
-        histMap[sid].total+=parseFloat(r.prezzo)||0;
-      } else if (r.tipo==='budget') {
-        state.budget=parseFloat(r.prezzo)||0;
+      if (r.tipo === 'item') {
+        items.push({ id: r.id, name: r.nome, qty: r.quantita, price: parseFloat(r.prezzo)||0, cat: r.categoria, who: r.chi, checked: r.spuntato===true, date: r.data });
+      } else if (r.tipo === 'history') {
+        const sid = r.sessione_id || r.id;
+        if (!histMap[sid]) histMap[sid] = { id: sid, date: r.data, items: [], total: 0 };
+        histMap[sid].items.push({ id: r.id, name: r.nome, qty: r.quantita, price: parseFloat(r.prezzo)||0, cat: r.categoria, who: r.chi });
+        histMap[sid].total += parseFloat(r.prezzo)||0;
+      } else if (r.tipo === 'budget') {
+        state.budget = parseFloat(r.prezzo)||0;
       }
     });
-    state.items=items;
-    state.history=Object.values(histMap);
-    saveLocal();
-    setSyncStatus('ok','Sincronizzato');
-    document.getElementById('offlineBanner').classList.remove('show');
+    state.items = items;
+    state.history = Object.values(histMap);
+    setSyncStatus('ok', 'Online');
     render();
   } catch(e) {
-    console.error('Fetch error:',e);
-    setSyncStatus('error','Offline');
-    document.getElementById('offlineBanner').classList.add('show');
+    setSyncStatus('error', 'Offline');
   }
 }
 
-async function pushToSheets() {
-  setSyncStatus('syncing','Salvo...');
-  try {
-    const rows=[];
-    rows.push({id:'budget',nome:'budget',quantita:'1',prezzo:state.budget,categoria:'',chi:'',spuntato:'',data:new Date().toISOString(),tipo:'budget'});
-    state.items.forEach(i=>{
-      rows.push({id:i.id,nome:i.name,quantita:i.qty,prezzo:i.price,categoria:i.cat,chi:i.who,spuntato:i.checked,data:i.date,tipo:'item'});
-    });
-    state.history.forEach(h=>{
-      h.items.forEach(i=>{
-        rows.push({id:h.id+'_'+i.id,nome:i.name,quantita:i.qty,prezzo:i.price,categoria:i.cat,chi:i.who||'',spuntato:'true',data:h.date,tipo:'history'});
-      });
-    });
-    const data = encodeURIComponent(JSON.stringify({items:rows}));
-    const url = SCRIPT_URL + '?action=sync&data=' + data;
-    const res = await fetch(url, {method:'GET'});
-    if (!res.ok) throw new Error('HTTP '+res.status);
-    setSyncStatus('ok','Sincronizzato');
-    document.getElementById('offlineBanner').classList.remove('show');
-  } catch(e) {
-    console.error('Push error:',e);
-    setSyncStatus('error','Offline');
-    document.getElementById('offlineBanner').classList.add('show');
-    saveLocal();
-  }
+function setSyncStatus(s, l) {
+  document.getElementById('syncDot').className = 'sync-dot' + (s !== 'ok' ? ' ' + s : '');
+  document.getElementById('syncLabel').textContent = l;
 }
-
-function setSyncStatus(status,label) {
-  const dot=document.getElementById('syncDot');
-  const lbl=document.getElementById('syncLabel');
-  dot.className='sync-dot'+(status!=='ok'?' '+status:'');
-  lbl.textContent=label;
-}
-
-function schedulePush() {
-  saveLocal();
-  clearTimeout(syncTimeout);
-  syncTimeout=setTimeout(()=>pushToSheets(),1500);
-}
-
-function syncNow() { fetchFromSheets(); }
 
 // --- UTILS ---
-function fmt(n){return '€'+parseFloat(n||0).toFixed(2).replace('.',',');}
-function fmtDate(iso){return new Date(iso).toLocaleDateString('it-IT',{day:'2-digit',month:'long',year:'numeric'});}
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
-function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+function fmt(n) { return '€' + parseFloat(n||0).toFixed(2).replace('.', ','); }
+function fmtDate(iso) { return new Date(iso).toLocaleDateString('it-IT', {day:'2-digit',month:'long',year:'numeric'}); }
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
+function showLoading(text) { document.getElementById('loadingText').textContent = text; document.getElementById('loadingOverlay').classList.add('show'); }
+function hideLoading() { document.getElementById('loadingOverlay').classList.remove('show'); }
 
-function setBudget(){
-  const v=parseFloat(document.getElementById('budgetInput').value);
-  if(!isNaN(v)&&v>=0){state.budget=v;schedulePush();render();showToast('Budget: '+fmt(v));document.getElementById('budgetInput').value='';}
+// --- BUDGET ---
+async function setBudget() {
+  const v = parseFloat(document.getElementById('budgetInput').value);
+  if (isNaN(v) || v < 0) return;
+  state.budget = v;
+  document.getElementById('budgetInput').value = '';
+  render();
+  try {
+    await sbDelete('tipo=eq.budget');
+    await sbInsert([{ id: 'budget', nome: 'budget', quantita: '1', prezzo: v, categoria: '', chi: '', spuntato: false, data: new Date().toISOString(), tipo: 'budget', sessione_id: null, scontrino_img: null }]);
+    showToast('Budget salvato: ' + fmt(v));
+  } catch(e) { showToast('Errore salvataggio budget'); }
 }
 
-function calcSpeso(){
-  const now=new Date();
-  return state.history.filter(h=>{const d=new Date(h.date);return d.getMonth()===now.getMonth()&&d.getFullYear()===now.getFullYear();}).reduce((s,h)=>s+h.total,0);
+function calcSpeso() {
+  const now = new Date();
+  return state.history.filter(h => {
+    const d = new Date(h.date);
+    return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+  }).reduce((s, h) => s + h.total, 0);
 }
 
-function addItem(){
-  const name=document.getElementById('newName').value.trim();
-  if(!name){showToast('Inserisci il nome!');return;}
-  const price=parseFloat(document.getElementById('newPrice').value)||0;
-  const qty=document.getElementById('newQty').value.trim()||'1';
-  const cat=document.getElementById('newCat').value;
-  const who=document.getElementById('newWho').value;
-  state.items.push({id:uid(),name,qty,price,cat,who,checked:false,date:new Date().toISOString()});
-  document.getElementById('newName').value='';
-  document.getElementById('newPrice').value='';
-  document.getElementById('newQty').value='';
-  schedulePush();render();showToast('Aggiunto: '+name);
+// --- ITEMS ---
+async function addItem() {
+  const name = document.getElementById('newName').value.trim();
+  if (!name) { showToast('Inserisci il nome!'); return; }
+  const price = parseFloat(document.getElementById('newPrice').value) || 0;
+  const qty = document.getElementById('newQty').value.trim() || '1';
+  const cat = document.getElementById('newCat').value;
+  const who = document.getElementById('newWho').value;
+  const id = uid();
+  const date = new Date().toISOString();
+  const newItem = { id, name, qty, price, cat, who, checked: false, date };
+  state.items.push(newItem);
+  document.getElementById('newName').value = '';
+  document.getElementById('newPrice').value = '';
+  document.getElementById('newQty').value = '';
+  render();
+  showToast('Aggiunto: ' + name);
+  try {
+    await sbInsert([{ id, nome: name, quantita: qty, prezzo: price, categoria: cat, chi: who, spuntato: false, data: date, tipo: 'item', sessione_id: null, scontrino_img: null }]);
+  } catch(e) { showToast('⚠️ Errore sync'); }
 }
 
-function toggleItem(id){
-  const item=state.items.find(i=>i.id===id);
-  if(item){item.checked=!item.checked;schedulePush();render();}
+async function toggleItem(id) {
+  const item = state.items.find(i => i.id === id);
+  if (!item) return;
+  item.checked = !item.checked;
+  render();
+  try {
+    await sbUpdate(id, { spuntato: item.checked });
+  } catch(e) { showToast('⚠️ Errore sync'); }
 }
 
-function deleteItem(id){
-  state.items=state.items.filter(i=>i.id!==id);
-  schedulePush();render();showToast('Rimosso');
+async function deleteItem(id) {
+  state.items = state.items.filter(i => i.id !== id);
+  render();
+  showToast('Rimosso');
+  try {
+    await sbDelete(`id=eq.${id}`);
+  } catch(e) { showToast('⚠️ Errore sync'); }
 }
 
-function filterCat(cat,el){
-  state.filterCat=cat;
-  document.querySelectorAll('.cat-chip').forEach(c=>c.classList.remove('active'));
-  el.classList.add('active');render();
+function filterCat(cat, el) {
+  state.filterCat = cat;
+  document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  render();
 }
 
-function completeSpesa(){
-  const checked=state.items.filter(i=>i.checked);
-  if(!checked.length){showToast('Nessun articolo spuntato!');return;}
-  const total=checked.reduce((s,i)=>s+i.price,0);
-  state.history.push({id:uid(),date:new Date().toISOString(),items:checked.map(i=>({...i})),total});
-  state.items=state.items.filter(i=>!i.checked);
-  schedulePush();render();showToast('Spesa registrata: '+fmt(total));
+async function completeSpesa() {
+  const checked = state.items.filter(i => i.checked);
+  if (!checked.length) { showToast('Nessun articolo spuntato!'); return; }
+  const total = checked.reduce((s, i) => s + i.price, 0);
+  const sid = uid();
+  const date = new Date().toISOString();
+  state.history.push({ id: sid, date, items: checked.map(i => ({...i})), total });
+  state.items = state.items.filter(i => !i.checked);
+  render();
+  showToast('Spesa registrata: ' + fmt(total));
+  try {
+    // Elimina gli item spuntati dal DB
+    for (const i of checked) await sbDelete(`id=eq.${i.id}`);
+    // Inserisci come history
+    const rows = checked.map(i => ({ id: uid(), nome: i.name, quantita: i.qty, prezzo: i.price, categoria: i.cat, chi: i.who||'', spuntato: true, data: date, tipo: 'history', sessione_id: sid, scontrino_img: null }));
+    await sbInsert(rows);
+  } catch(e) { showToast('⚠️ Errore sync storico'); }
 }
 
-function clearAll(){
-  if(!state.items.length)return;
-  state.items=[];schedulePush();render();showToast('Lista svuotata');
+async function clearAll() {
+  if (!state.items.length) return;
+  const ids = state.items.map(i => i.id);
+  state.items = [];
+  render();
+  showToast('Lista svuotata');
+  try {
+    for (const id of ids) await sbDelete(`id=eq.${id}`);
+  } catch(e) {}
 }
 
-const ce={'Alimentari':'🥦','Freschissimi':'🥩','Bevande':'🧃','Casa':'🧹','Igiene':'🧴','Altro':'📦'};
-const we={'Io':'🧑','Lei':'👩','Entrambi':'👫'};
+// --- SCONTRINO AI ---
+function onImageSelected(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const base64 = e.target.result;
+    currentImageBase64 = base64.split(',')[1];
+    const preview = document.getElementById('scontrinoPreview');
+    preview.src = base64;
+    preview.style.display = 'block';
+    document.getElementById('scontrinoPlaceholder').style.display = 'none';
+    document.getElementById('btnScan').style.display = 'block';
+    document.getElementById('scanResult').style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
 
-function iCard(item){
+async function analizzaScontrino() {
+  const apiKey = getApiKey();
+  if (!apiKey) { showToast('⚠️ Inserisci prima la API key Anthropic!'); return; }
+  if (!currentImageBase64) { showToast('Seleziona prima un\'immagine!'); return; }
+  showLoading('Analisi scontrino con AI...');
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-client-side-api-key-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-opus-4-5',
+        max_tokens: 1024,
+        messages: [{
+          role: 'user',
+          content: [
+            { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: currentImageBase64 } },
+            { type: 'text', text: 'Questo è uno scontrino della spesa italiano. Estrai tutti gli articoli acquistati con nome e prezzo. Rispondi SOLO con un JSON valido in questo formato, senza testo aggiuntivo: {"articoli":[{"nome":"Pane","prezzo":1.50,"categoria":"Alimentari"},{"nome":"Latte","prezzo":1.20,"categoria":"Freschissimi"}]}. Le categorie possibili sono: Alimentari, Freschissimi, Bevande, Casa, Igiene, Altro.' }
+          ]
+        }]
+      })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error?.message || 'Errore API');
+    const text = data.content[0].text;
+    const clean = text.replace(/```json|```/g, '').trim();
+    const parsed = JSON.parse(clean);
+    scannedItems = parsed.articoli || [];
+    renderScanResult();
+  } catch(e) {
+    showToast('Errore: ' + e.message);
+  } finally {
+    hideLoading();
+  }
+}
+
+function renderScanResult() {
+  if (!scannedItems.length) { showToast('Nessun articolo trovato'); return; }
+  const el = document.getElementById('scanItems');
+  el.innerHTML = scannedItems.map((item, i) =>
+    `<div class="scan-item">
+      <span class="scan-item-name">${item.nome}</span>
+      <span class="scan-item-price">${fmt(item.prezzo)}</span>
+    </div>`
+  ).join('');
+  document.getElementById('scanResult').style.display = 'block';
+}
+
+async function importaScontrino() {
+  if (!scannedItems.length) return;
+  const total = scannedItems.reduce((s, i) => s + (parseFloat(i.prezzo)||0), 0);
+  const sid = uid();
+  const date = new Date().toISOString();
+  state.history.push({ id: sid, date, items: scannedItems.map(i => ({ id: uid(), name: i.nome, qty: '1', price: parseFloat(i.prezzo)||0, cat: i.categoria||'Altro', who: 'Entrambi' })), total });
+  render();
+  showToast('Scontrino importato: ' + fmt(total));
+  document.getElementById('scanResult').style.display = 'none';
+  document.getElementById('btnScan').style.display = 'none';
+  document.getElementById('scontrinoPreview').style.display = 'none';
+  document.getElementById('scontrinoPlaceholder').style.display = 'block';
+  currentImageBase64 = null;
+  scannedItems = [];
+  try {
+    const rows = state.history[state.history.length-1].items.map(i => ({
+      id: uid(), nome: i.name, quantita: '1', prezzo: i.price, categoria: i.cat, chi: 'Entrambi', spuntato: true, data: date, tipo: 'history', sessione_id: sid, scontrino_img: null
+    }));
+    await sbInsert(rows);
+  } catch(e) { showToast('⚠️ Errore sync scontrino'); }
+}
+
+// --- RENDER ---
+const ce = {'Alimentari':'🥦','Freschissimi':'🥩','Bevande':'🧃','Casa':'🧹','Igiene':'🧴','Altro':'📦'};
+const we = {'Io':'🧑','Lei':'👩','Entrambi':'👫'};
+
+function iCard(item) {
   return `<div class="item-card${item.checked?' checked':''}" onclick="toggleItem('${item.id}')">
     <div class="item-check">${item.checked?'✓':''}</div>
     <div class="item-info">
@@ -377,124 +593,122 @@ function iCard(item){
   </div>`;
 }
 
-function renderLista(){
-  const filtered=state.filterCat==='Tutte'?state.items:state.items.filter(i=>i.cat===state.filterCat);
-  const pending=filtered.filter(i=>!i.checked);
-  const done=filtered.filter(i=>i.checked);
-  const speso=calcSpeso();
-  const rim=state.budget-speso;
-  const pct=state.budget>0?Math.min(100,(speso/state.budget)*100):0;
-  const over=speso>state.budget&&state.budget>0;
-  document.getElementById('budgetMax').textContent=fmt(state.budget);
-  document.getElementById('budgetSpeso').textContent=fmt(speso);
-  const rimEl=document.getElementById('budgetRim');
-  rimEl.textContent=(over?'-':'')+fmt(Math.abs(rim));
-  rimEl.className='bv '+(over?'red':'green');
-  const bar=document.getElementById('budgetBar');
-  bar.style.width=pct+'%';
-  bar.className='budget-bar-fill'+(over?' over':'');
-  document.getElementById('headerAmt').textContent=fmt(speso);
-  document.getElementById('headerAmt').className='amount'+(over?' over':'');
-  document.getElementById('badgeLista').textContent=state.items.filter(i=>!i.checked).length;
-  const stimato=state.items.reduce((s,i)=>s+i.price,0);
-  const pendEl=document.getElementById('listaDaComprare');
-  if(!pending.length){
-    pendEl.innerHTML='<div class="empty"><div class="emoji">🛍️</div><p>Nessun articolo.<br>Aggiungine qualcuno sopra!</p></div>';
-  } else {
-    pendEl.innerHTML=`<div class="section-label">Da comprare (${pending.length}) — stimato ${fmt(stimato)}</div>`+pending.map(iCard).join('');
-  }
-  const doneEl=document.getElementById('listaComprata');
-  doneEl.innerHTML=done.length?`<div class="section-label" style="margin-top:14px">Spuntati (${done.length})</div>`+done.map(iCard).join(''):'';
-  const btnEl=document.getElementById('bottomBtns');
-  if(state.items.some(i=>i.checked)){
-    btnEl.innerHTML=`<button class="btn-add" onclick="completeSpesa()" style="flex:2">✅ Registra spesa</button><button class="btn-add" onclick="clearAll()" style="flex:1;background:#a89580">🗑 Svuota</button>`;
-  } else if(state.items.length){
-    btnEl.innerHTML=`<button class="btn-add" onclick="clearAll()" style="background:#a89580">🗑 Svuota lista</button>`;
-  } else {btnEl.innerHTML='';}
+function renderLista() {
+  const filtered = state.filterCat==='Tutte' ? state.items : state.items.filter(i=>i.cat===state.filterCat);
+  const pending = filtered.filter(i=>!i.checked);
+  const done = filtered.filter(i=>i.checked);
+  const speso = calcSpeso();
+  const rim = state.budget - speso;
+  const pct = state.budget>0 ? Math.min(100,(speso/state.budget)*100) : 0;
+  const over = speso>state.budget && state.budget>0;
+  document.getElementById('budgetMax').textContent = fmt(state.budget);
+  document.getElementById('budgetSpeso').textContent = fmt(speso);
+  const rimEl = document.getElementById('budgetRim');
+  rimEl.textContent = (over?'-':'')+fmt(Math.abs(rim));
+  rimEl.className = 'bv '+(over?'red':'green');
+  document.getElementById('budgetBar').style.width = pct+'%';
+  document.getElementById('budgetBar').className = 'budget-bar-fill'+(over?' over':'');
+  document.getElementById('headerAmt').textContent = fmt(speso);
+  document.getElementById('headerAmt').className = 'amount'+(over?' over':'');
+  document.getElementById('badgeLista').textContent = state.items.filter(i=>!i.checked).length;
+  const stimato = state.items.reduce((s,i)=>s+i.price,0);
+  const pendEl = document.getElementById('listaDaComprare');
+  pendEl.innerHTML = !pending.length
+    ? '<div class="empty"><div class="emoji">🛍️</div><p>Nessun articolo.<br>Aggiungine qualcuno sopra!</p></div>'
+    : `<div class="section-label">Da comprare (${pending.length}) — stimato ${fmt(stimato)}</div>`+pending.map(iCard).join('');
+  const doneEl = document.getElementById('listaComprata');
+  doneEl.innerHTML = done.length ? `<div class="section-label" style="margin-top:14px">Spuntati (${done.length})</div>`+done.map(iCard).join('') : '';
+  const btnEl = document.getElementById('bottomBtns');
+  if (state.items.some(i=>i.checked)) {
+    btnEl.innerHTML = `<button class="btn-add" onclick="completeSpesa()" style="flex:2">✅ Registra spesa</button><button class="btn-add" onclick="clearAll()" style="flex:1;background:#a89580">🗑 Svuota</button>`;
+  } else if (state.items.length) {
+    btnEl.innerHTML = `<button class="btn-add" onclick="clearAll()" style="background:#a89580">🗑 Svuota lista</button>`;
+  } else { btnEl.innerHTML=''; }
 }
 
-function renderStorico(){
-  const el=document.getElementById('storicoContent');
-  if(!state.history.length){el.innerHTML='<div class="empty"><div class="emoji">📜</div><p>Nessuna spesa registrata ancora.</p></div>';return;}
-  const sorted=[...state.history].sort((a,b)=>new Date(b.date)-new Date(a.date));
-  const groups={};
-  sorted.forEach(h=>{
-    const key=new Date(h.date).toLocaleDateString('it-IT',{month:'long',year:'numeric'});
-    if(!groups[key])groups[key]=[];
+function renderStorico() {
+  const el = document.getElementById('storicoContent');
+  if (!state.history.length) { el.innerHTML='<div class="empty"><div class="emoji">📜</div><p>Nessuna spesa registrata ancora.</p></div>'; return; }
+  const sorted = [...state.history].sort((a,b)=>new Date(b.date)-new Date(a.date));
+  const groups = {};
+  sorted.forEach(h => {
+    const key = new Date(h.date).toLocaleDateString('it-IT',{month:'long',year:'numeric'});
+    if (!groups[key]) groups[key]=[];
     groups[key].push(h);
   });
-  let html='';
-  Object.entries(groups).forEach(([month,sessions])=>{
-    const mt=sessions.reduce((s,h)=>s+h.total,0);
-    html+=`<div class="history-group"><div class="history-date"><span>${month.charAt(0).toUpperCase()+month.slice(1)}</span><span style="color:var(--accent)">${fmt(mt)}</span></div>`;
-    sessions.forEach(s=>{
-      html+=`<div style="background:white;border-radius:12px;padding:13px;margin-bottom:9px;border:1px solid var(--border)">
+  let html = '';
+  Object.entries(groups).forEach(([month,sessions]) => {
+    const mt = sessions.reduce((s,h)=>s+h.total,0);
+    html += `<div class="history-group"><div class="history-date"><span>${month.charAt(0).toUpperCase()+month.slice(1)}</span><span style="color:var(--accent)">${fmt(mt)}</span></div>`;
+    sessions.forEach(s => {
+      html += `<div style="background:white;border-radius:12px;padding:13px;margin-bottom:9px;border:1px solid var(--border)">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:9px">
           <div style="font-size:12px;font-weight:700;color:var(--text3)">${fmtDate(s.date)}</div>
           <div style="font-size:15px;font-weight:800;color:var(--accent);font-family:'Playfair Display',serif">${fmt(s.total)}</div>
         </div>`;
-      s.items.forEach(item=>{
-        html+=`<div class="history-item"><div><div class="hi-name">${item.name}</div><div class="hi-meta">x${item.qty} · ${item.cat}</div></div><div class="hi-price">${item.price>0?fmt(item.price):'—'}</div></div>`;
+      s.items.forEach(item => {
+        html += `<div class="history-item"><div><div class="hi-name">${item.name}</div><div class="hi-meta">x${item.qty} · ${item.cat}</div></div><div class="hi-price">${item.price>0?fmt(item.price):'—'}</div></div>`;
       });
-      html+='</div>';
+      html += '</div>';
     });
-    html+='</div>';
+    html += '</div>';
   });
-  el.innerHTML=html;
+  el.innerHTML = html;
 }
 
-function renderStats(){
-  const el=document.getElementById('statsContent');
-  const allItems=state.history.flatMap(h=>h.items);
-  if(!allItems.length&&!state.items.length){el.innerHTML='<div class="empty"><div class="emoji">📊</div><p>Nessun dato ancora.</p></div>';return;}
-  const totalSpent=state.history.reduce((s,h)=>s+h.total,0);
-  const thisMonth=calcSpeso();
-  const nS=state.history.length;
-  const avg=nS>0?totalSpent/nS:0;
-  const byCat={};
+function renderStats() {
+  const el = document.getElementById('statsContent');
+  const allItems = state.history.flatMap(h=>h.items);
+  if (!allItems.length && !state.items.length) { el.innerHTML='<div class="empty"><div class="emoji">📊</div><p>Nessun dato ancora.</p></div>'; return; }
+  const totalSpent = state.history.reduce((s,h)=>s+h.total,0);
+  const thisMonth = calcSpeso();
+  const nS = state.history.length;
+  const avg = nS>0 ? totalSpent/nS : 0;
+  const byCat = {};
   allItems.forEach(item=>{byCat[item.cat]=(byCat[item.cat]||0)+item.price;});
-  const maxV=Math.max(...Object.values(byCat),1);
-  const cc={'Alimentari':'#4a7c59','Freschissimi':'#c8553d','Bevande':'#3d7abf','Casa':'#a07850','Igiene':'#7c5c9e','Altro':'#8a8a8a'};
-  let html=`<div class="stats-grid">
+  const maxV = Math.max(...Object.values(byCat),1);
+  const cc = {'Alimentari':'#4a7c59','Freschissimi':'#c8553d','Bevande':'#3d7abf','Casa':'#a07850','Igiene':'#7c5c9e','Altro':'#8a8a8a'};
+  let html = `<div class="stats-grid">
     <div class="stat-card"><div class="sv">${fmt(thisMonth)}</div><div class="sl">Questo mese</div></div>
     <div class="stat-card"><div class="sv">${fmt(totalSpent)}</div><div class="sl">Totale storico</div></div>
     <div class="stat-card"><div class="sv">${nS}</div><div class="sl">Spese effettuate</div></div>
     <div class="stat-card"><div class="sv">${fmt(avg)}</div><div class="sl">Media a spesa</div></div>
   </div>`;
-  const cats=Object.entries(byCat).sort((a,b)=>b[1]-a[1]);
-  if(cats.length){
-    html+=`<div class="add-form"><div class="add-form-title">Spesa per categoria</div>`;
-    cats.forEach(([cat,val])=>{
-      html+=`<div class="cat-stat-row"><div class="cat-stat-name">${cat}</div><div class="cat-stat-bar-bg"><div class="cat-stat-bar" style="width:${(val/maxV*100).toFixed(1)}%;background:${cc[cat]||'#888'}"></div></div><div class="cat-stat-val">${fmt(val)}</div></div>`;
+  const cats = Object.entries(byCat).sort((a,b)=>b[1]-a[1]);
+  if (cats.length) {
+    html += `<div class="add-form"><div class="add-form-title">Spesa per categoria</div>`;
+    cats.forEach(([cat,val]) => {
+      html += `<div class="cat-stat-row"><div class="cat-stat-name">${cat}</div><div class="cat-stat-bar-bg"><div class="cat-stat-bar" style="width:${(val/maxV*100).toFixed(1)}%;background:${cc[cat]||'#888'}"></div></div><div class="cat-stat-val">${fmt(val)}</div></div>`;
     });
-    html+='</div>';
+    html += '</div>';
   }
-  const freq={};
+  const freq = {};
   allItems.forEach(i=>{freq[i.name]=(freq[i.name]||0)+1;});
-  const top=Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,5);
-  if(top.length){
-    html+=`<div class="add-form"><div class="add-form-title">Più acquistati</div>`;
-    top.forEach(([name,n])=>{
-      html+=`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span style="font-size:14px;font-weight:500">${name}</span><span style="font-size:13px;font-weight:700;color:var(--accent)">${n}x</span></div>`;
+  const top = Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,5);
+  if (top.length) {
+    html += `<div class="add-form"><div class="add-form-title">Più acquistati</div>`;
+    top.forEach(([name,n]) => {
+      html += `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span style="font-size:14px;font-weight:500">${name}</span><span style="font-size:13px;font-weight:700;color:var(--accent)">${n}x</span></div>`;
     });
-    html+='</div>';
+    html += '</div>';
   }
-  el.innerHTML=html;
+  el.innerHTML = html;
 }
 
-function render(){renderLista();renderStorico();renderStats();}
+function render() { renderLista(); renderStorico(); renderStats(); }
 
-function switchTab(tab){
+function switchTab(tab) {
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('panel-'+tab).classList.add('active');
   document.getElementById('tab-'+tab).classList.add('active');
 }
 
-loadLocal();
+// --- INIT ---
+initApiKeyUI();
 render();
-fetchFromSheets();
-setInterval(fetchFromSheets,30000);
+loadFromDB();
+setInterval(loadFromDB, 15000);
 </script>
 </body>
 </html>
