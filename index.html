@@ -29,21 +29,21 @@
   .sync-dot { width:7px; height:7px; border-radius:50%; background:var(--green); flex-shrink:0; transition:background 0.3s; }
   .sync-label { font-size:11px; color:var(--ink2); font-weight:600; }
   /* month nav inside hero */
-  .hero-month { display:flex; align-items:center; justify-content:center; gap:20px; margin-bottom:22px; position:relative; z-index:1; }
-  .hero-month .month-arrow { width:36px; height:36px; border-radius:50%; border:1px solid rgba(255,255,255,0.18); background:rgba(255,255,255,0.08); color:rgba(255,255,255,0.85); font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.18s; flex-shrink:0; }
+  .hero-month { display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:12px; position:relative; z-index:1; }
+  .hero-month .month-arrow { width:26px; height:26px; border-radius:50%; border:1px solid rgba(255,255,255,0.18); background:rgba(255,255,255,0.08); color:rgba(255,255,255,0.85); font-size:14px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.18s; flex-shrink:0; }
   .hero-month .month-arrow:hover { background:rgba(255,255,255,0.16); transform:scale(1.06); }
   .hero-month .month-arrow:active { transform:scale(0.94); }
-  .hero-month .month-current { text-align:center; min-width:140px; }
-  .hero-month .month-current .m { font-family:'Fraunces',serif; font-size:23px; font-weight:600; line-height:1; letter-spacing:1px; color:#fff; }
-  .hero-month .month-current .y { font-size:11px; color:rgba(255,255,255,0.5); font-weight:600; letter-spacing:2px; margin-top:4px; }
-  .hero-month .month-current.is-current .m::after { content:'•'; color:var(--gold); margin-left:7px; }
+  .hero-month .month-current { text-align:center; min-width:120px; display:flex; align-items:baseline; justify-content:center; gap:7px; }
+  .hero-month .month-current .m { font-family:'Fraunces',serif; font-size:16px; font-weight:600; line-height:1; letter-spacing:1px; color:#fff; }
+  .hero-month .month-current .y { font-size:11px; color:rgba(255,255,255,0.5); font-weight:600; letter-spacing:1px; }
+  .hero-month .month-current.is-current .m::after { content:'•'; color:var(--gold); margin-left:5px; }
   /* category section more notable */
   .cat-section { background:var(--surface); border-radius:var(--r); padding:18px 18px 14px; margin-bottom:22px; border:1px solid var(--line); box-shadow:var(--shadow-sm); }
   .cat-section-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
   .cat-section-title { font-family:'Fraunces',serif; font-size:15px; font-weight:600; }
   .cat-manage-btn { background:var(--sage-light); color:var(--sage-dark); border:none; border-radius:14px; padding:8px 14px; font-size:12.5px; font-weight:600; cursor:pointer; font-family:'Outfit',sans-serif; transition:all 0.18s; }
   .cat-manage-btn:hover { background:var(--sage); color:#fff; }
-  .tabs { display:flex; gap:8px; margin-bottom:22px; overflow-x:auto; scrollbar-width:none; }
+  .tabs { display:flex; gap:8px; margin-bottom:16px; overflow-x:auto; scrollbar-width:none; }
   .tabs::-webkit-scrollbar { display:none; }
   .tab { padding:9px 16px; font-size:13px; font-weight:600; color:var(--ink2); cursor:pointer; border-radius:16px; white-space:nowrap; transition:all 0.18s;
     display:flex; align-items:center; gap:6px; border:1px solid transparent; }
@@ -51,30 +51,30 @@
   .tab.active { background:var(--ink); color:var(--surface); box-shadow:var(--shadow-sm); }
   .tab .badge { background:var(--terra); color:#fff; border-radius:10px; font-size:10px; padding:1px 6px; font-weight:700; }
   .content { padding:0 20px 48px; max-width:680px; margin:0 auto; }
-  .hero { background:linear-gradient(140deg, var(--ink) 0%, #2d5258 100%); border-radius:var(--r-lg); padding:28px; margin-bottom:24px; color:var(--surface);
-    position:relative; overflow:hidden; box-shadow:var(--shadow-lg); }
+  .hero { background:linear-gradient(140deg, var(--ink) 0%, #2d5258 100%); border-radius:var(--r-sm); padding:14px 16px; margin-bottom:12px; color:var(--surface);
+    position:relative; overflow:hidden; box-shadow:var(--shadow-sm); }
   .hero::before { content:''; position:absolute; top:-60px; right:-40px; width:180px; height:180px; border-radius:50%; background:radial-gradient(circle, rgba(108,192,192,0.3), transparent 70%); }
   .hero::after { content:''; position:absolute; bottom:-50px; left:-30px; width:140px; height:140px; border-radius:50%; background:radial-gradient(circle, rgba(91,155,184,0.25), transparent 70%); }
-  .hero-top { display:flex; justify-content:space-between; align-items:flex-start; position:relative; z-index:1; margin-bottom:18px; }
-  .hero-label { font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:rgba(255,255,255,0.5); font-weight:600; }
-  .hero-spent { font-family:'Fraunces',serif; font-size:38px; font-weight:600; line-height:1; margin-top:6px; }
-  .hero-budget-tag { font-size:13px; color:rgba(255,255,255,0.6); margin-top:6px; }
+  .hero-top { display:flex; justify-content:space-between; align-items:baseline; position:relative; z-index:1; margin-bottom:8px; }
+  .hero-label { font-size:9px; text-transform:uppercase; letter-spacing:1.2px; color:rgba(255,255,255,0.5); font-weight:600; }
+  .hero-spent { font-family:'Fraunces',serif; font-size:24px; font-weight:600; line-height:1; margin-top:2px; }
+  .hero-budget-tag { font-size:11px; color:rgba(255,255,255,0.55); margin-top:3px; }
   .hero-rim { text-align:right; }
-  .hero-rim .rl { font-size:10px; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.5); font-weight:600; }
-  .hero-rim .rv { font-family:'Fraunces',serif; font-size:24px; font-weight:600; margin-top:4px; color:#7fd4c0; }
+  .hero-rim .rl { font-size:9px; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.5); font-weight:600; }
+  .hero-rim .rv { font-family:'Fraunces',serif; font-size:17px; font-weight:600; margin-top:2px; color:#7fd4c0; }
   .hero-rim .rv.over { color:#e8a48f; }
-  .hero-bar-bg { height:8px; background:rgba(255,255,255,0.12); border-radius:6px; overflow:hidden; position:relative; z-index:1; }
+  .hero-bar-bg { height:6px; background:rgba(255,255,255,0.12); border-radius:6px; overflow:hidden; position:relative; z-index:1; }
   .hero-bar-fill { height:100%; border-radius:6px; background:linear-gradient(90deg,#6cc0c0,#4fa3a3); transition:width 0.6s cubic-bezier(0.4,0,0.2,1); }
-  .hero-edit { display:flex; gap:8px; margin-top:16px; position:relative; z-index:1; max-width:280px; }
-  .hero-edit input { flex:1; min-width:0; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.18); border-radius:14px; padding:10px 14px; color:var(--surface); font-size:14px; font-family:'Outfit',sans-serif; }
+  .hero-edit { display:flex; gap:7px; margin-top:10px; position:relative; z-index:1; max-width:240px; }
+  .hero-edit input { flex:1; min-width:0; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.18); border-radius:11px; padding:7px 11px; color:var(--surface); font-size:12.5px; font-family:'Outfit',sans-serif; }
   .hero-edit input::placeholder { color:rgba(255,255,255,0.4); }
   .hero-edit input:focus { outline:none; border-color:var(--terra); }
-  .hero-edit button { background:var(--terra); color:#fff; border:none; border-radius:14px; padding:10px 18px; font-size:13px; font-weight:600; cursor:pointer; font-family:'Outfit',sans-serif; transition:all 0.18s; }
+  .hero-edit button { background:var(--terra); color:#fff; border:none; border-radius:11px; padding:7px 14px; font-size:12.5px; font-weight:600; cursor:pointer; font-family:'Outfit',sans-serif; transition:all 0.18s; }
   .hero-edit button:hover { background:#4a89a6; }
-  .mini-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:24px; }
-  .mini-stat { background:var(--surface); border-radius:var(--r-sm); padding:16px 13px; border:1px solid var(--line); box-shadow:var(--shadow-sm); text-align:center; }
-  .mini-stat .v { font-family:'Fraunces',serif; font-size:19px; font-weight:600; color:var(--ink); }
-  .mini-stat .l { font-size:10px; color:var(--ink3); text-transform:uppercase; letter-spacing:0.5px; font-weight:600; margin-top:2px; }
+  .mini-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:16px; }
+  .mini-stat { background:var(--surface); border-radius:var(--r-sm); padding:11px 10px; border:1px solid var(--line); box-shadow:var(--shadow-sm); text-align:center; }
+  .mini-stat .v { font-family:'Fraunces',serif; font-size:17px; font-weight:600; color:var(--ink); }
+  .mini-stat .l { font-size:9.5px; color:var(--ink3); text-transform:uppercase; letter-spacing:0.5px; font-weight:600; margin-top:2px; }
   .card { background:var(--surface); border-radius:var(--r); padding:22px; margin-bottom:22px; border:1px solid var(--line); box-shadow:var(--shadow-sm); }
   .card-title { font-family:'Fraunces',serif; font-size:17px; font-weight:600; margin-bottom:18px; display:flex; align-items:center; gap:8px; }
   .card-title .ico { font-size:17px; }
@@ -155,15 +155,12 @@
   .panel { display:none; }
   .panel.active { display:block; animation:fadeIn 0.25s; }
   .row2 { display:flex; gap:8px; }
-  .demo-banner { background:var(--terra-light); color:var(--sage-dark); text-align:center; font-size:11px; font-weight:600; padding:6px; }
 </style>
 </head>
 <body>
 
-<div class="demo-banner">✨ Anteprima UI — dati di esempio, database non collegato</div>
-
 <div class="topbar">
-  <div class="sync-pill"><div class="sync-dot"></div><span class="sync-label">Demo</span></div>
+  <div class="sync-pill"><div class="sync-dot" id="syncDot"></div><span class="sync-label" id="syncLabel">...</span></div>
 </div>
 
 <div class="content">
@@ -171,26 +168,26 @@
   <div class="hero">
     <div class="hero-month">
       <button class="month-arrow" onclick="changeMonth(-1)">‹</button>
-      <div class="month-current is-current"><div class="m" id="monthName">GIUGNO</div><div class="y" id="monthYear">2026</div></div>
+      <div class="month-current" id="monthCurrent"><div class="m" id="monthName">—</div><div class="y" id="monthYear">—</div></div>
       <button class="month-arrow" onclick="changeMonth(1)">›</button>
     </div>
     <div class="hero-top">
       <div>
         <div class="hero-label">Speso nel mese</div>
-        <div class="hero-spent">€247,80</div>
-        <div class="hero-budget-tag">su €400,00 di budget</div>
+        <div class="hero-spent" id="heroSpent">€0,00</div>
+        <div class="hero-budget-tag" id="heroBudgetTag">Budget non impostato</div>
       </div>
-      <div class="hero-rim"><div class="rl">Rimane</div><div class="rv">€152,20</div></div>
+      <div class="hero-rim"><div class="rl">Rimane</div><div class="rv" id="heroRim">€0,00</div></div>
     </div>
-    <div class="hero-bar-bg"><div class="hero-bar-fill" style="width:62%"></div></div>
+    <div class="hero-bar-bg"><div class="hero-bar-fill" id="heroBar" style="width:0%"></div></div>
     <div class="hero-edit">
-      <input type="number" placeholder="Budget mese (€)">
-      <button>Imposta</button>
+      <input type="number" id="budgetInput" placeholder="Budget mese (€)" min="0" step="10">
+      <button onclick="setBudget()">Imposta</button>
     </div>
   </div>
 
   <div class="tabs">
-    <div class="tab active" id="tab-lista" onclick="switchTab('lista')">🛒 Lista <span class="badge">4</span></div>
+    <div class="tab active" id="tab-lista" onclick="switchTab('lista')">🛒 Lista <span class="badge" id="badgeLista">0</span></div>
     <div class="tab" id="tab-storico" onclick="switchTab('storico')">📋 Spese</div>
     <div class="tab" id="tab-offerte" onclick="switchTab('offerte')">🏷️ Offerte</div>
     <div class="tab" id="tab-preferiti" onclick="switchTab('preferiti')">⭐ Preferiti</div>
@@ -198,145 +195,60 @@
 
   <div class="panel active" id="panel-lista">
     <div class="mini-stats">
-      <div class="mini-stat"><div class="v">3</div><div class="l">Spese fatte</div></div>
-      <div class="mini-stat"><div class="v">€82</div><div class="l">Media spesa</div></div>
-      <div class="mini-stat"><div class="v">4</div><div class="l">Da comprare</div></div>
+      <div class="mini-stat"><div class="v" id="msSpese">0</div><div class="l">Spese fatte</div></div>
+      <div class="mini-stat"><div class="v" id="msMedia">€0</div><div class="l">Media spesa</div></div>
+      <div class="mini-stat"><div class="v" id="msDaComprare">0</div><div class="l">Da comprare</div></div>
     </div>
 
-    <div class="list-tabs">
-      <div class="list-tab active">Spesa</div>
-      <div class="list-tab">Festa 🎉 <span class="x">×</span></div>
-      <div class="list-add">+ Lista</div>
-    </div>
+    <div class="list-tabs" id="listTabs"></div>
 
-    <div class="card">
+    <div class="card" style="border:1.5px solid var(--sage-light); box-shadow:var(--shadow)">
       <div class="card-title"><span class="ico">➕</span> Aggiungi articolo</div>
       <div class="frow">
-        <div class="fg" style="flex:2"><label>Articolo</label><input type="text" class="field" placeholder="es. Pane integrale"></div>
-        <div class="fg" style="flex:0 0 62px"><label>Qtà</label><input type="text" class="field" placeholder="1"></div>
+        <div class="fg" style="flex:2"><label>Articolo</label><input type="text" class="field" id="newName" placeholder="es. Pane integrale" onkeydown="if(event.key==='Enter')addItem()"></div>
+        <div class="fg" style="flex:0 0 62px"><label>Qtà</label><input type="text" class="field" id="newQty" placeholder="1"></div>
       </div>
       <div class="frow">
-        <div class="fg"><label>Prezzo (€)</label><input type="number" class="field" placeholder="0,00"></div>
-        <div class="fg"><label>Categoria</label><select class="field"><option>🥦 Alimentari</option><option>🥩 Freschissimi</option></select></div>
+        <div class="fg"><label>Prezzo (€)</label><input type="number" class="field" id="newPrice" placeholder="0,00" min="0" step="0.01"></div>
+        <div class="fg"><label>Categoria</label><select class="field" id="newCat"></select></div>
       </div>
       <div class="frow">
-        <div class="fg"><label>Chi compra</label><select class="field"><option>👫 Entrambi</option><option>🧑 Io</option><option>👩 Lei</option></select></div>
-        <div class="fg" style="display:flex;align-items:flex-end"><button class="btn btn-primary">Aggiungi</button></div>
+        <div class="fg"><label>Chi compra</label><select class="field" id="newWho">
+          <option value="Entrambi">👫 Entrambi</option><option value="Io">🧑 Io</option><option value="Lei">👩 Lei</option>
+        </select></div>
+        <div class="fg" style="display:flex;align-items:flex-end"><button class="btn btn-primary" onclick="addItem()">Aggiungi</button></div>
       </div>
     </div>
 
     <div class="cat-section">
       <div class="cat-section-head">
         <span class="cat-section-title">Categorie</span>
-        <button class="cat-manage-btn">⚙️ Gestisci</button>
+        <button class="cat-manage-btn" onclick="openModal('modalCat')">⚙️ Gestisci</button>
       </div>
-      <div class="cat-scroll">
-        <div class="cat-chip active">Tutte</div>
-        <div class="cat-chip">🥦 Alimentari</div>
-        <div class="cat-chip">🥩 Freschissimi</div>
-        <div class="cat-chip">🧃 Bevande</div>
-        <div class="cat-chip">🧹 Casa</div>
-      </div>
+      <div class="cat-scroll" id="catFilter"></div>
     </div>
 
-    <div class="sec-label">Da comprare (4) · stima €18,40</div>
-    <div class="item">
-      <div class="check"></div>
-      <div class="item-body"><div class="item-name">Pane integrale</div><div class="item-meta"><span class="tag">🥦 Alimentari</span><span class="tag muted">x1</span><span class="tag muted">👫 Entrambi</span></div></div>
-      <div class="item-price">€1,80</div><div class="item-fav">☆</div><button class="item-del">×</button>
-    </div>
-    <div class="item">
-      <div class="check"></div>
-      <div class="item-body"><div class="item-name">Latte parzialmente scremato</div><div class="item-meta"><span class="tag">🥩 Freschissimi</span><span class="tag muted">x2</span><span class="tag muted">🧑 Io</span></div></div>
-      <div class="item-price">€2,40</div><div class="item-fav on">⭐</div><button class="item-del">×</button>
-    </div>
-    <div class="item">
-      <div class="check"></div>
-      <div class="item-body"><div class="item-name">Pasta Barilla 500g</div><div class="item-meta"><span class="tag">🥦 Alimentari</span><span class="tag muted">x3</span><span class="tag muted">👫 Entrambi</span></div></div>
-      <div class="item-price">€3,60</div><div class="item-fav">☆</div><button class="item-del">×</button>
-    </div>
-    <div class="item">
-      <div class="check"></div>
-      <div class="item-body"><div class="item-name">Detersivo piatti</div><div class="item-meta"><span class="tag">🧹 Casa</span><span class="tag muted">x1</span><span class="tag muted">👩 Lei</span></div></div>
-      <div class="item-price">€2,90</div><div class="item-fav">☆</div><button class="item-del">×</button>
-    </div>
-
-    <div class="sec-label" style="margin-top:16px">Nel carrello (1)</div>
-    <div class="item checked">
-      <div class="check">✓</div>
-      <div class="item-body"><div class="item-name">Caffè</div><div class="item-meta"><span class="tag">🥦 Alimentari</span><span class="tag muted">x1</span><span class="tag muted">👫 Entrambi</span></div></div>
-      <div class="item-price">€4,50</div><div class="item-fav">☆</div><button class="item-del">×</button>
-    </div>
-
-    <div class="row2" style="margin-top:4px">
-      <button class="btn btn-primary" style="flex:2;width:auto">✅ Registra spesa</button>
-      <button class="btn btn-ghost" style="flex:1">Svuota</button>
-    </div>
+    <div id="listaDaComprare"></div>
+    <div id="listaComprata"></div>
+    <div class="row2" id="bottomBtns" style="margin-top:4px"></div>
   </div>
 
-  <div class="panel" id="panel-storico">
-    <div class="mini-stats" style="margin-bottom:18px">
-      <div class="mini-stat"><div class="v">€248</div><div class="l">Totale mese</div></div>
-      <div class="mini-stat"><div class="v">3</div><div class="l">Spese</div></div>
-      <div class="mini-stat"><div class="v">€82</div><div class="l">Media</div></div>
-    </div>
-    <div class="card" style="padding:15px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px">
-        <div style="font-size:13px;font-weight:600;color:var(--ink2)">mar 03 giu</div>
-        <div style="font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--terra)">€86,40</div>
-      </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-top:1px solid var(--line)">
-        <div><div style="font-size:14px;font-weight:500">Spesa settimanale</div><div style="font-size:11px;color:var(--ink3)">🥦 Alimentari · x1</div></div>
-        <div style="font-weight:600;color:var(--terra)">€86,40</div>
-      </div>
-      <button class="btn btn-ghost" style="width:100%;padding:8px;margin-top:10px;font-size:12px">Elimina questa spesa</button>
-    </div>
-    <div class="card" style="padding:15px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px">
-        <div style="font-size:13px;font-weight:600;color:var(--ink2)">sab 31 mag</div>
-        <div style="font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--terra)">€78,20</div>
-      </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-top:1px solid var(--line)">
-        <div><div style="font-size:14px;font-weight:500">Frutta e verdura</div><div style="font-size:11px;color:var(--ink3)">🍎 Frutta · x1</div></div>
-        <div style="font-weight:600;color:var(--terra)">€78,20</div>
-      </div>
-      <button class="btn btn-ghost" style="width:100%;padding:8px;margin-top:10px;font-size:12px">Elimina questa spesa</button>
-    </div>
-  </div>
+  <div class="panel" id="panel-storico"><div id="storicoContent"></div></div>
 
   <div class="panel" id="panel-offerte">
     <div class="card">
       <div class="card-title"><span class="ico">🏷️</span> Segnala un'offerta</div>
-      <div class="frow"><div class="fg" style="flex:2"><label>Prodotto</label><input type="text" class="field" placeholder="es. Caffè Lavazza 250g"></div></div>
+      <div class="frow"><div class="fg" style="flex:2"><label>Prodotto</label><input type="text" class="field" id="offName" placeholder="es. Caffè Lavazza 250g"></div></div>
       <div class="frow">
-        <div class="fg"><label>Supermercato</label><input type="text" class="field" placeholder="es. Esselunga"></div>
-        <div class="fg" style="flex:0 0 90px"><label>Prezzo (€)</label><input type="number" class="field" placeholder="0,00"></div>
+        <div class="fg"><label>Supermercato</label><input type="text" class="field" id="offStore" placeholder="es. Esselunga"></div>
+        <div class="fg" style="flex:0 0 90px"><label>Prezzo (€)</label><input type="number" class="field" id="offPrice" placeholder="0,00" min="0" step="0.01"></div>
       </div>
       <div class="frow">
-        <div class="fg" style="flex:0 0 110px"><label>Prezzo pieno (€)</label><input type="number" class="field" placeholder="opz."></div>
-        <div class="fg" style="display:flex;align-items:flex-end"><button class="btn btn-terra" style="width:100%;padding:11px">Salva offerta</button></div>
+        <div class="fg" style="flex:0 0 110px"><label>Prezzo pieno (€)</label><input type="number" class="field" id="offFull" placeholder="opz." min="0" step="0.01"></div>
+        <div class="fg" style="display:flex;align-items:flex-end"><button class="btn btn-terra" style="width:100%;padding:11px" onclick="addOffer()">Salva offerta</button></div>
       </div>
     </div>
-    <div class="sec-label">📍 Esselunga (2)</div>
-    <div class="offer">
-      <div class="offer-badge">🏷️</div>
-      <div class="offer-body"><div class="offer-name">Caffè Lavazza 250g</div><div class="offer-where"><span class="store-pin">📍</span> Esselunga · prima €4,90</div></div>
-      <div class="offer-price"><div class="now">€2,99</div><div class="save">-39%</div></div>
-      <button class="item-del">×</button>
-    </div>
-    <div class="offer">
-      <div class="offer-badge">🏷️</div>
-      <div class="offer-body"><div class="offer-name">Olio EVO 1L</div><div class="offer-where"><span class="store-pin">📍</span> Esselunga · prima €8,50</div></div>
-      <div class="offer-price"><div class="now">€5,99</div><div class="save">-30%</div></div>
-      <button class="item-del">×</button>
-    </div>
-    <div class="sec-label">📍 Lidl (1)</div>
-    <div class="offer">
-      <div class="offer-badge">🏷️</div>
-      <div class="offer-body"><div class="offer-name">Tonno in scatola 3x</div><div class="offer-where"><span class="store-pin">📍</span> Lidl</div></div>
-      <div class="offer-price"><div class="now">€3,49</div></div>
-      <button class="item-del">×</button>
-    </div>
+    <div id="offerteContent"></div>
   </div>
 
   <div class="panel" id="panel-preferiti">
@@ -344,36 +256,354 @@
       <div class="card-title"><span class="ico">⭐</span> I tuoi preferiti</div>
       <p style="font-size:13px;color:var(--ink2);line-height:1.5">Tocca un preferito per aggiungerlo subito alla lista attiva. Salva un articolo tra i preferiti con la ☆ accanto a ogni voce della lista.</p>
     </div>
-    <div class="item" style="cursor:default">
-      <div class="offer-badge" style="width:42px;height:42px;font-size:18px;background:linear-gradient(135deg,var(--gold),var(--terra))">🥩</div>
-      <div class="item-body"><div class="item-name">Latte parzialmente scremato</div><div class="item-meta"><span class="tag">Freschissimi</span><span class="tag muted">€1,20</span></div></div>
-      <button class="btn btn-primary" style="width:auto;padding:8px 14px;font-size:13px">+ Lista</button>
-      <button class="item-del">×</button>
-    </div>
-    <div class="item" style="cursor:default">
-      <div class="offer-badge" style="width:42px;height:42px;font-size:18px;background:linear-gradient(135deg,var(--gold),var(--terra))">🥦</div>
-      <div class="item-body"><div class="item-name">Pane integrale</div><div class="item-meta"><span class="tag">Alimentari</span><span class="tag muted">€1,80</span></div></div>
-      <button class="btn btn-primary" style="width:auto;padding:8px 14px;font-size:13px">+ Lista</button>
-      <button class="item-del">×</button>
-    </div>
+    <div id="preferitiContent"></div>
   </div>
 
+</div>
+
+<div class="modal-bg" id="modalCat">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Gestisci categorie</div>
+    <div class="chip-list" id="catManageList"></div>
+    <div class="frow" style="margin-top:14px">
+      <div class="fg"><input type="text" class="field" id="newCatName" placeholder="Nuova categoria (es. Surgelati)"></div>
+      <button class="btn btn-primary" style="width:auto;padding:10px 18px" onclick="addCategory()">Crea</button>
+    </div>
+    <div class="modal-actions"><button class="btn btn-ghost" onclick="closeModal('modalCat')">Chiudi</button></div>
+  </div>
+</div>
+
+<div class="modal-bg" id="modalList">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Nuova lista</div>
+    <div class="fg"><label>Nome lista</label><input type="text" class="field" id="newListName" placeholder="es. Festa compleanno"></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('modalList')">Annulla</button>
+      <button class="btn btn-primary" onclick="addList()">Crea lista</button>
+    </div>
+  </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-  const months = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
-  let m = 5, y = 2026;
-  function changeMonth(d){ m+=d; if(m>11){m=0;y++;} if(m<0){m=11;y--;} document.getElementById('monthName').textContent=months[m].toUpperCase(); document.getElementById('monthYear').textContent=y;
-    const cur = (m===5&&y===2026); document.querySelector('.hero-month .month-current').className='month-current'+(cur?' is-current':''); }
-  function switchTab(t){ document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active')); document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-    document.getElementById('panel-'+t).classList.add('active'); document.getElementById('tab-'+t).classList.add('active'); }
-  // demo: toggle items visually
-  document.querySelectorAll('.item .check, .item .item-body').forEach(el=>{
-    el.addEventListener('click', function(){ const item=this.closest('.item'); item.classList.toggle('checked'); const c=item.querySelector('.check'); c.textContent=item.classList.contains('checked')?'✓':''; });
+const SB_URL = 'https://zelmmjvluhpcvgbcltxy.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InplbG1tanZsdWhwY3ZnYmNsdHh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2MDE3ODgsImV4cCI6MjA5NjE3Nzc4OH0.GocYM_2GP5-RXANrs-FniMm-cqU0sP_sgndmsQOTNB8';
+const TABLE = 'spesa';
+
+const DEFAULT_CATS = ['Alimentari','Freschissimi','Bevande','Casa','Igiene','Altro'];
+const CAT_EMOJI = {'Alimentari':'🥦','Freschissimi':'🥩','Bevande':'🧃','Casa':'🧹','Igiene':'🧴','Altro':'📦','Surgelati':'🧊','Frutta':'🍎','Carne':'🍖','Pesce':'🐟','Dolci':'🍰','Animali':'🐾'};
+const WHO_EMOJI = {'Io':'🧑','Lei':'👩','Entrambi':'👫'};
+
+let state = { items:[], history:[], offers:[], budgets:{}, cats:[...DEFAULT_CATS], lists:[{id:'default',name:'Spesa'}] };
+let activeList = 'default';
+let activeCatFilter = 'Tutte';
+let viewMonth = new Date().getMonth();
+let viewYear = new Date().getFullYear();
+
+async function sbGet() {
+  const res = await fetch(`${SB_URL}/rest/v1/${TABLE}?select=*&order=data.asc`, { headers:{ apikey:SB_KEY, Authorization:`Bearer ${SB_KEY}` } });
+  if (!res.ok) throw new Error('GET'); return res.json();
+}
+async function sbInsert(rows) {
+  const res = await fetch(`${SB_URL}/rest/v1/${TABLE}`, { method:'POST', headers:{ apikey:SB_KEY, Authorization:`Bearer ${SB_KEY}`, 'Content-Type':'application/json', Prefer:'return=minimal' }, body:JSON.stringify(rows) });
+  if (!res.ok) throw new Error('INSERT');
+}
+async function sbDelete(filter) {
+  const res = await fetch(`${SB_URL}/rest/v1/${TABLE}?${filter}`, { method:'DELETE', headers:{ apikey:SB_KEY, Authorization:`Bearer ${SB_KEY}`, 'Content-Type':'application/json' } });
+  if (!res.ok) throw new Error('DELETE');
+}
+async function sbUpdate(id, data) {
+  const res = await fetch(`${SB_URL}/rest/v1/${TABLE}?id=eq.${id}`, { method:'PATCH', headers:{ apikey:SB_KEY, Authorization:`Bearer ${SB_KEY}`, 'Content-Type':'application/json' }, body:JSON.stringify(data) });
+  if (!res.ok) throw new Error('UPDATE');
+}
+function pExtra(r){ try { return r.extra ? JSON.parse(r.extra) : {}; } catch(e){ return {}; } }
+
+async function loadFromDB() {
+  setSync('syncing','Carico...');
+  try {
+    const rows = await sbGet();
+    const items=[], histMap={}, offers=[]; const budgets={}; let cats=null; let lists=null;
+    rows.forEach(r => {
+      const ex = pExtra(r);
+      if (r.tipo === 'item') {
+        items.push({ id:r.id, name:r.nome, qty:r.quantita, price:+r.prezzo||0, cat:r.categoria, who:r.chi, checked:r.spuntato===true, date:r.data, lista_id:r.lista_id||'default', fav:ex.fav||false });
+      } else if (r.tipo === 'history') {
+        const sid = r.sessione_id || r.id;
+        if (!histMap[sid]) histMap[sid] = { id:sid, date:r.data, items:[], total:0 };
+        histMap[sid].items.push({ id:r.id, name:r.nome, qty:r.quantita, price:+r.prezzo||0, cat:r.categoria, who:r.chi });
+        histMap[sid].total += +r.prezzo||0;
+      } else if (r.tipo === 'budget') {
+        budgets[r.mese || r.id] = +r.prezzo||0;
+      } else if (r.tipo === 'offer') {
+        offers.push({ id:r.id, name:r.nome, store:r.supermercato||'', price:+r.prezzo||0, full:+r.prezzo_offerta||0, date:r.data });
+      } else if (r.tipo === 'meta_cats') { cats = ex.cats || null; }
+      else if (r.tipo === 'meta_lists') { lists = ex.lists || null; }
+      else if (r.tipo === 'fav') {
+        items.push({ id:r.id, name:r.nome, qty:r.quantita||'1', price:+r.prezzo||0, cat:r.categoria, who:r.chi||'Entrambi', checked:false, date:r.data, lista_id:'__fav__', fav:true });
+      }
+    });
+    state.items=items; state.history=Object.values(histMap); state.offers=offers; state.budgets=budgets;
+    if (cats) state.cats=cats; if (lists) state.lists=lists;
+    if (!state.lists.find(l=>l.id===activeList)) activeList = state.lists[0]?.id || 'default';
+    setSync('ok','Online'); renderAll();
+  } catch(e) { setSync('error','Offline'); }
+}
+function setSync(s,l){ document.getElementById('syncDot').className='sync-dot'+(s!=='ok'?' '+s:''); document.getElementById('syncLabel').textContent=l; }
+
+function fmt(n){ return '€'+(+n||0).toFixed(2).replace('.',','); }
+function fmtShort(n){ const v=+n||0; return '€'+(v%1===0?v:v.toFixed(0)); }
+function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
+function monthKey(y,m){ return y+'-'+String(m+1).padStart(2,'0'); }
+function curMonthKey(){ return monthKey(viewYear, viewMonth); }
+function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2400); }
+function inViewMonth(iso){ const d=new Date(iso); return d.getMonth()===viewMonth && d.getFullYear()===viewYear; }
+
+function changeMonth(delta){ viewMonth+=delta; if(viewMonth>11){viewMonth=0;viewYear++;} if(viewMonth<0){viewMonth=11;viewYear--;} renderAll(); }
+function renderMonth(){
+  const names=['GENNAIO','FEBBRAIO','MARZO','APRILE','MAGGIO','GIUGNO','LUGLIO','AGOSTO','SETTEMBRE','OTTOBRE','NOVEMBRE','DICEMBRE'];
+  document.getElementById('monthName').textContent=names[viewMonth];
+  document.getElementById('monthYear').textContent=viewYear;
+  const now=new Date(); const isCur=now.getMonth()===viewMonth&&now.getFullYear()===viewYear;
+  document.getElementById('monthCurrent').className='month-current'+(isCur?' is-current':'');
+}
+
+async function setBudget(){
+  const v=parseFloat(document.getElementById('budgetInput').value); if(isNaN(v)||v<0) return;
+  const mk=curMonthKey(); state.budgets[mk]=v; document.getElementById('budgetInput').value=''; renderAll();
+  try { await sbDelete(`and=(tipo.eq.budget,mese.eq.${mk})`);
+    await sbInsert([{ id:'budget_'+mk, nome:'budget', quantita:'1', prezzo:v, categoria:'', chi:'', spuntato:false, data:new Date().toISOString(), tipo:'budget', mese:mk }]);
+    toast('Budget '+fmt(v)+' impostato');
+  } catch(e){ toast('⚠️ Errore salvataggio'); }
+}
+function spesoMese(){ return state.history.filter(h=>inViewMonth(h.date)).reduce((s,h)=>s+h.total,0); }
+
+function renderCatSelect(){ document.getElementById('newCat').innerHTML = state.cats.map(c=>`<option value="${c}">${CAT_EMOJI[c]||'📦'} ${c}</option>`).join(''); }
+function renderCatFilter(){
+  let html=`<div class="cat-chip${activeCatFilter==='Tutte'?' active':''}" onclick="setCatFilter('Tutte')">Tutte</div>`;
+  html+=state.cats.map(c=>`<div class="cat-chip${activeCatFilter===c?' active':''}" onclick="setCatFilter('${c}')">${CAT_EMOJI[c]||'📦'} ${c}</div>`).join('');
+  document.getElementById('catFilter').innerHTML=html;
+}
+function setCatFilter(c){ activeCatFilter=c; renderCatFilter(); renderLista(); }
+function renderCatManage(){ document.getElementById('catManageList').innerHTML = state.cats.map(c=>`<div class="chip-manage">${CAT_EMOJI[c]||'📦'} ${c} <span class="del" onclick="delCategory('${c}')">×</span></div>`).join(''); }
+async function addCategory(){
+  const name=document.getElementById('newCatName').value.trim(); if(!name) return;
+  if(state.cats.includes(name)){ toast('Già esistente'); return; }
+  state.cats.push(name); document.getElementById('newCatName').value='';
+  renderCatManage(); renderCatSelect(); renderCatFilter(); await saveCats(); toast('Categoria creata');
+}
+async function delCategory(c){
+  if(state.cats.length<=1){ toast('Deve restarne almeno una'); return; }
+  state.cats=state.cats.filter(x=>x!==c); if(activeCatFilter===c) activeCatFilter='Tutte';
+  renderCatManage(); renderCatSelect(); renderCatFilter(); renderLista(); await saveCats(); toast('Categoria eliminata');
+}
+async function saveCats(){
+  try { await sbDelete('tipo=eq.meta_cats');
+    await sbInsert([{ id:'meta_cats', nome:'cats', quantita:'', prezzo:0, categoria:'', chi:'', spuntato:false, data:new Date().toISOString(), tipo:'meta_cats', extra:JSON.stringify({cats:state.cats}) }]);
+  } catch(e){ toast('⚠️ Errore sync categorie'); }
+}
+
+function renderListTabs(){
+  let html=state.lists.map(l=>{ const canDel=l.id!=='default';
+    return `<div class="list-tab${activeList===l.id?' active':''}" onclick="setActiveList('${l.id}')">${l.name}${canDel?` <span class="x" onclick="event.stopPropagation();delList('${l.id}')">×</span>`:''}</div>`;
+  }).join('');
+  html+=`<div class="list-add" onclick="openModal('modalList')">+ Lista</div>`;
+  document.getElementById('listTabs').innerHTML=html;
+}
+function setActiveList(id){ activeList=id; renderListTabs(); renderLista(); }
+async function addList(){
+  const name=document.getElementById('newListName').value.trim(); if(!name) return;
+  const id=uid(); state.lists.push({id,name}); document.getElementById('newListName').value=''; closeModal('modalList');
+  activeList=id; renderListTabs(); renderLista(); await saveLists(); toast('Lista creata');
+}
+async function delList(id){
+  state.lists=state.lists.filter(l=>l.id!==id);
+  const toDel=state.items.filter(i=>i.lista_id===id); state.items=state.items.filter(i=>i.lista_id!==id);
+  if(activeList===id) activeList='default'; renderListTabs(); renderLista(); await saveLists();
+  try { for(const i of toDel) await sbDelete(`id=eq.${i.id}`); } catch(e){} toast('Lista eliminata');
+}
+async function saveLists(){
+  try { await sbDelete('tipo=eq.meta_lists');
+    await sbInsert([{ id:'meta_lists', nome:'lists', quantita:'', prezzo:0, categoria:'', chi:'', spuntato:false, data:new Date().toISOString(), tipo:'meta_lists', extra:JSON.stringify({lists:state.lists}) }]);
+  } catch(e){ toast('⚠️ Errore sync liste'); }
+}
+
+async function addItem(){
+  const name=document.getElementById('newName').value.trim(); if(!name){ toast('Inserisci il nome!'); return; }
+  const price=parseFloat(document.getElementById('newPrice').value)||0;
+  const qty=document.getElementById('newQty').value.trim()||'1';
+  const cat=document.getElementById('newCat').value; const who=document.getElementById('newWho').value;
+  const id=uid(); const date=new Date().toISOString();
+  state.items.push({id,name,qty,price,cat,who,checked:false,date,lista_id:activeList,fav:false});
+  document.getElementById('newName').value=''; document.getElementById('newPrice').value=''; document.getElementById('newQty').value='';
+  renderLista(); toast('Aggiunto: '+name);
+  try { await sbInsert([{ id, nome:name, quantita:qty, prezzo:price, categoria:cat, chi:who, spuntato:false, data:date, tipo:'item', lista_id:activeList, extra:JSON.stringify({fav:false}) }]); } catch(e){ toast('⚠️ Errore sync'); }
+}
+async function toggleItem(id){
+  const it=state.items.find(i=>i.id===id); if(!it) return; it.checked=!it.checked; renderLista();
+  try { await sbUpdate(id,{spuntato:it.checked}); } catch(e){ toast('⚠️ Errore sync'); }
+}
+async function deleteItem(id){
+  state.items=state.items.filter(i=>i.id!==id); renderLista(); toast('Rimosso');
+  try { await sbDelete(`id=eq.${id}`); } catch(e){}
+}
+async function toggleFav(id){
+  const it=state.items.find(i=>i.id===id); if(!it) return; it.fav=!it.fav; renderLista();
+  if(it.fav){ const fid='fav_'+uid();
+    try { await sbInsert([{ id:fid, nome:it.name, quantita:it.qty, prezzo:it.price, categoria:it.cat, chi:it.who, spuntato:false, data:new Date().toISOString(), tipo:'fav' }]); toast('⭐ Aggiunto ai preferiti'); } catch(e){}
+  }
+  try { await sbUpdate(id,{extra:JSON.stringify({fav:it.fav})}); } catch(e){}
+}
+async function addFavToList(fav){
+  const id=uid(); const date=new Date().toISOString();
+  state.items.push({id,name:fav.name,qty:fav.qty,price:fav.price,cat:fav.cat,who:fav.who,checked:false,date,lista_id:activeList,fav:false});
+  renderLista(); toast(fav.name+' aggiunto');
+  try { await sbInsert([{ id, nome:fav.name, quantita:fav.qty, prezzo:fav.price, categoria:fav.cat, chi:fav.who, spuntato:false, data:date, tipo:'item', lista_id:activeList, extra:JSON.stringify({fav:false}) }]); } catch(e){}
+}
+async function delFav(id){
+  state.items=state.items.filter(i=>i.id!==id); renderPreferiti();
+  try { await sbDelete(`id=eq.${id}`); } catch(e){} toast('Preferito rimosso');
+}
+
+async function completeSpesa(){
+  const checked=state.items.filter(i=>i.checked && i.lista_id===activeList); if(!checked.length){ toast('Nessun articolo spuntato!'); return; }
+  const total=checked.reduce((s,i)=>s+i.price,0); const sid=uid(); const date=new Date().toISOString();
+  state.history.push({id:sid,date,items:checked.map(i=>({...i})),total});
+  state.items=state.items.filter(i=>!(i.checked && i.lista_id===activeList)); renderAll(); toast('Spesa registrata: '+fmt(total));
+  try { for(const i of checked) await sbDelete(`id=eq.${i.id}`);
+    const rows=checked.map(i=>({ id:uid(), nome:i.name, quantita:i.qty, prezzo:i.price, categoria:i.cat, chi:i.who||'', spuntato:true, data:date, tipo:'history', sessione_id:sid }));
+    await sbInsert(rows);
+  } catch(e){ toast('⚠️ Errore sync'); }
+}
+async function clearList(){
+  const toDel=state.items.filter(i=>i.lista_id===activeList); if(!toDel.length) return;
+  state.items=state.items.filter(i=>i.lista_id!==activeList); renderLista(); toast('Lista svuotata');
+  try { for(const i of toDel) await sbDelete(`id=eq.${i.id}`); } catch(e){}
+}
+
+async function addOffer(){
+  const name=document.getElementById('offName').value.trim(); const store=document.getElementById('offStore').value.trim();
+  const price=parseFloat(document.getElementById('offPrice').value)||0; const full=parseFloat(document.getElementById('offFull').value)||0;
+  if(!name||!store){ toast('Inserisci prodotto e supermercato'); return; }
+  const id=uid(); const date=new Date().toISOString();
+  state.offers.push({id,name,store,price,full,date});
+  document.getElementById('offName').value=''; document.getElementById('offStore').value=''; document.getElementById('offPrice').value=''; document.getElementById('offFull').value='';
+  renderOfferte(); toast('Offerta salvata');
+  try { await sbInsert([{ id, nome:name, quantita:'1', prezzo:price, categoria:'', chi:'', spuntato:false, data:date, tipo:'offer', supermercato:store, prezzo_offerta:full }]); } catch(e){ toast('⚠️ Errore sync'); }
+}
+async function delOffer(id){ state.offers=state.offers.filter(o=>o.id!==id); renderOfferte();
+  try { await sbDelete(`id=eq.${id}`); } catch(e){} toast('Offerta rimossa');
+}
+
+function itemCard(it){
+  return `<div class="item${it.checked?' checked':''}">
+    <div class="check" onclick="toggleItem('${it.id}')">${it.checked?'✓':''}</div>
+    <div class="item-body" onclick="toggleItem('${it.id}')">
+      <div class="item-name">${it.name}</div>
+      <div class="item-meta"><span class="tag">${CAT_EMOJI[it.cat]||'📦'} ${it.cat}</span><span class="tag muted">x${it.qty}</span><span class="tag muted">${WHO_EMOJI[it.who]||''} ${it.who}</span></div>
+    </div>
+    ${it.price>0?`<div class="item-price">${fmt(it.price)}</div>`:''}
+    <div class="item-fav${it.fav?' on':''}" onclick="toggleFav('${it.id}')">${it.fav?'⭐':'☆'}</div>
+    <button class="item-del" onclick="deleteItem('${it.id}')">×</button>
+  </div>`;
+}
+
+function renderLista(){
+  const all=state.items.filter(i=>i.lista_id===activeList);
+  const filtered=activeCatFilter==='Tutte'?all:all.filter(i=>i.cat===activeCatFilter);
+  const pending=filtered.filter(i=>!i.checked); const done=filtered.filter(i=>i.checked);
+  const speso=spesoMese(); const budget=state.budgets[curMonthKey()]||0; const rim=budget-speso;
+  const pct=budget>0?Math.min(100,(speso/budget)*100):0; const over=speso>budget&&budget>0;
+  document.getElementById('heroSpent').textContent=fmt(speso);
+  document.getElementById('heroBudgetTag').textContent=budget>0?`su ${fmt(budget)} di budget`:'Budget non impostato';
+  const rimEl=document.getElementById('heroRim'); rimEl.textContent=(over?'-':'')+fmt(Math.abs(rim)); rimEl.className='rv'+(over?' over':'');
+  document.getElementById('heroBar').style.width=pct+'%'; document.getElementById('heroBar').className='hero-bar-fill'+(over?' over':'');
+  const mesi=state.history.filter(h=>inViewMonth(h.date));
+  document.getElementById('msSpese').textContent=mesi.length;
+  document.getElementById('msMedia').textContent=mesi.length?fmtShort(mesi.reduce((s,h)=>s+h.total,0)/mesi.length):'€0';
+  document.getElementById('msDaComprare').textContent=all.filter(i=>!i.checked).length;
+  document.getElementById('badgeLista').textContent=all.filter(i=>!i.checked).length;
+  const stimato=all.reduce((s,i)=>s+i.price,0);
+  document.getElementById('listaDaComprare').innerHTML = !pending.length
+    ? '<div class="empty"><div class="e">🛍️</div><p>Lista vuota.<br>Aggiungi il primo articolo!</p></div>'
+    : `<div class="sec-label">Da comprare (${pending.length})${stimato>0?' · stima '+fmt(stimato):''}</div>`+pending.map(itemCard).join('');
+  document.getElementById('listaComprata').innerHTML = done.length?`<div class="sec-label" style="margin-top:16px">Nel carrello (${done.length})</div>`+done.map(itemCard).join(''):'';
+  const bb=document.getElementById('bottomBtns');
+  if(all.some(i=>i.checked)){ bb.innerHTML=`<button class="btn btn-primary" style="flex:2;width:auto" onclick="completeSpesa()">✅ Registra spesa</button><button class="btn btn-ghost" style="flex:1" onclick="clearList()">Svuota</button>`; }
+  else if(all.length){ bb.innerHTML=`<button class="btn btn-ghost" style="width:100%" onclick="clearList()">🗑 Svuota lista</button>`; }
+  else bb.innerHTML='';
+}
+
+function renderStorico(){
+  const el=document.getElementById('storicoContent');
+  const mesi=state.history.filter(h=>inViewMonth(h.date)).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  if(!mesi.length){ el.innerHTML='<div class="empty"><div class="e">📋</div><p>Nessuna spesa registrata<br>in questo mese.</p></div>'; return; }
+  const tot=mesi.reduce((s,h)=>s+h.total,0);
+  let html=`<div class="mini-stats" style="margin-bottom:18px">
+    <div class="mini-stat"><div class="v">${fmtShort(tot)}</div><div class="l">Totale mese</div></div>
+    <div class="mini-stat"><div class="v">${mesi.length}</div><div class="l">Spese</div></div>
+    <div class="mini-stat"><div class="v">${fmtShort(tot/mesi.length)}</div><div class="l">Media</div></div>
+  </div>`;
+  mesi.forEach(s=>{ const d=new Date(s.date);
+    html+=`<div class="card" style="padding:15px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px">
+        <div style="font-size:13px;font-weight:600;color:var(--ink2)">${d.toLocaleDateString('it-IT',{weekday:'short',day:'2-digit',month:'short'})}</div>
+        <div style="font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--terra)">${fmt(s.total)}</div></div>`;
+    s.items.forEach(it=>{ html+=`<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-top:1px solid var(--line)">
+        <div><div style="font-size:14px;font-weight:500">${it.name}</div><div style="font-size:11px;color:var(--ink3)">${CAT_EMOJI[it.cat]||'📦'} ${it.cat} · x${it.qty}</div></div>
+        <div style="font-weight:600;color:var(--terra)">${it.price>0?fmt(it.price):'—'}</div></div>`; });
+    html+=`<button class="btn btn-ghost" style="width:100%;padding:8px;margin-top:10px;font-size:12px" onclick="delHistory('${s.id}')">Elimina questa spesa</button></div>`;
   });
-  document.querySelectorAll('.item-fav').forEach(f=>{ f.addEventListener('click',function(e){ e.stopPropagation(); this.classList.toggle('on'); this.textContent=this.classList.contains('on')?'⭐':'☆'; }); });
+  el.innerHTML=html;
+}
+async function delHistory(sid){
+  state.history=state.history.filter(h=>h.id!==sid); renderAll(); toast('Spesa eliminata');
+  try { await sbDelete(`sessione_id=eq.${sid}`); } catch(e){}
+}
+
+function renderOfferte(){
+  const el=document.getElementById('offerteContent');
+  const offs=state.offers.filter(o=>inViewMonth(o.date)).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  if(!offs.length){ el.innerHTML='<div class="empty"><div class="e">🏷️</div><p>Nessuna offerta segnata<br>in questo mese.</p></div>'; return; }
+  const byStore={}; offs.forEach(o=>{ if(!byStore[o.store]) byStore[o.store]=[]; byStore[o.store].push(o); });
+  let html='';
+  Object.entries(byStore).forEach(([store,list])=>{
+    html+=`<div class="sec-label">📍 ${store} (${list.length})</div>`;
+    list.forEach(o=>{ const save=o.full>o.price?Math.round((1-o.price/o.full)*100):0;
+      html+=`<div class="offer"><div class="offer-badge">🏷️</div>
+        <div class="offer-body"><div class="offer-name">${o.name}</div><div class="offer-where"><span class="store-pin">📍</span> ${o.store}${o.full>0?` · prima ${fmt(o.full)}`:''}</div></div>
+        <div class="offer-price"><div class="now">${fmt(o.price)}</div>${save>0?`<div class="save">-${save}%</div>`:''}</div>
+        <button class="item-del" onclick="delOffer('${o.id}')">×</button></div>`;
+    });
+  });
+  el.innerHTML=html;
+}
+
+function renderPreferiti(){
+  const el=document.getElementById('preferitiContent');
+  const favs=state.items.filter(i=>i.lista_id==='__fav__');
+  if(!favs.length){ el.innerHTML='<div class="empty"><div class="e">⭐</div><p>Nessun preferito ancora.<br>Tocca la ☆ accanto a un articolo<br>per salvarlo qui.</p></div>'; return; }
+  el.innerHTML = favs.map(f=>`<div class="item" style="cursor:default">
+    <div class="offer-badge" style="width:42px;height:42px;font-size:18px;background:linear-gradient(135deg,var(--gold),var(--terra))">${CAT_EMOJI[f.cat]||'📦'}</div>
+    <div class="item-body"><div class="item-name">${f.name}</div><div class="item-meta"><span class="tag">${f.cat}</span>${f.price>0?`<span class="tag muted">${fmt(f.price)}</span>`:''}</div></div>
+    <button class="btn btn-primary" style="width:auto;padding:8px 14px;font-size:13px" onclick='addFavToList(${JSON.stringify(f).replace(/'/g,"&#39;")})'>+ Lista</button>
+    <button class="item-del" onclick="delFav('${f.id}')">×</button>
+  </div>`).join('');
+}
+
+function renderAll(){ renderMonth(); renderCatSelect(); renderCatFilter(); renderCatManage(); renderListTabs(); renderLista(); renderStorico(); renderOfferte(); renderPreferiti(); }
+
+function switchTab(tab){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+tab).classList.add('active'); document.getElementById('tab-'+tab).classList.add('active');
+}
+function openModal(id){ document.getElementById(id).classList.add('show'); }
+function closeModal(id){ document.getElementById(id).classList.remove('show'); }
+document.querySelectorAll('.modal-bg').forEach(m=>m.addEventListener('click',e=>{ if(e.target===m) m.classList.remove('show'); }));
+
+renderAll(); loadFromDB(); setInterval(loadFromDB, 15000);
 </script>
 </body>
 </html>
