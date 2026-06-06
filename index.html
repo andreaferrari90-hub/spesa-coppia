@@ -57,19 +57,16 @@
       <div class="hero-bar-fill" id="heroBar" style="width:0%"></div>
     </div>
 
-    <div class="hero-edit">
-      <input type="number" id="budgetInput" placeholder="Budget mese (€)" min="0" step="10">
+    <div class="hero-budget-row">
+      <button class="hero-budget-toggle" id="budgetToggle" onclick="toggleBudgetEdit()" title="Modifica budget">✏️</button>
+    </div>
+    <div class="hero-edit" id="heroEditArea" style="display:none">
+      <input type="number" id="budgetInput" placeholder="Budget mese (€)" min="0" step="10"
+             onkeydown="if(event.key==='Enter')setBudget()">
       <button onclick="setBudget()">Imposta</button>
     </div>
   </div>
 
-  <!-- Tab navigazione -->
-  <div class="tabs">
-    <div class="tab active" id="tab-lista"     onclick="switchTab('lista')">🛒 Lista <span class="badge" id="badgeLista">0</span></div>
-    <div class="tab"        id="tab-storico"   onclick="switchTab('storico')">📋 Spese</div>
-    <div class="tab"        id="tab-offerte"   onclick="switchTab('offerte')">🏷️ Offerte</div>
-    <div class="tab"        id="tab-preferiti" onclick="switchTab('preferiti')">⭐ Preferiti</div>
-  </div>
 
   <!-- ── Panel: Lista ───────────────────────────────────────── -->
   <div class="panel active" id="panel-lista">
@@ -256,6 +253,27 @@
     </div>
   </div>
 </div>
+
+<!-- Bottom navigation -->
+<nav class="bottom-nav">
+  <div class="bnav-item active" id="bnav-lista"     onclick="switchTab('lista')">
+    <div class="bnav-icon">🛒</div>
+    <div class="bnav-label">Lista</div>
+    <span class="bnav-badge" id="badgeLista" style="display:none">0</span>
+  </div>
+  <div class="bnav-item" id="bnav-storico"   onclick="switchTab('storico')">
+    <div class="bnav-icon">📋</div>
+    <div class="bnav-label">Spese</div>
+  </div>
+  <div class="bnav-item" id="bnav-offerte"   onclick="switchTab('offerte')">
+    <div class="bnav-icon">🏷️</div>
+    <div class="bnav-label">Offerte</div>
+  </div>
+  <div class="bnav-item" id="bnav-preferiti" onclick="switchTab('preferiti')">
+    <div class="bnav-icon">⭐</div>
+    <div class="bnav-label">Preferiti</div>
+  </div>
+</nav>
 
 <!-- Toast notifiche -->
 <div class="toast" id="toast"></div>

@@ -170,9 +170,18 @@ function setSync(status, label) {
 
 function switchTab(tab) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.bnav-item').forEach(t => t.classList.remove('active'));
   document.getElementById('panel-' + tab).classList.add('active');
-  document.getElementById('tab-' + tab).classList.add('active');
+  document.getElementById('bnav-' + tab).classList.add('active');
+}
+
+function toggleBudgetEdit() {
+  const area   = document.getElementById('heroEditArea');
+  const btn    = document.getElementById('budgetToggle');
+  const isOpen = area.style.display !== 'none';
+  area.style.display = isOpen ? 'none' : 'flex';
+  btn.classList.toggle('open', !isOpen);
+  if (!isOpen) document.getElementById('budgetInput').focus();
 }
 
 function openModal(id)  { document.getElementById(id).classList.add('show'); }
@@ -423,7 +432,10 @@ function renderLista() {
     ? fmtShort(sessioni.reduce((s, h) => s + h.total, 0) / sessioni.length)
     : '€0';
   document.getElementById('msDaComprare').textContent = all.filter(i => !i.checked).length;
-  document.getElementById('badgeLista').textContent   = all.filter(i => !i.checked).length;
+  const badgeCount = all.filter(i => !i.checked).length;
+  const badgeEl = document.getElementById('badgeLista');
+  badgeEl.textContent = badgeCount;
+  badgeEl.style.display = badgeCount > 0 ? 'block' : 'none';
 
   // Lista articoli
   const stimato = all.reduce((s, i) => s + i.price, 0);

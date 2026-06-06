@@ -102,7 +102,7 @@ body::before {
 
 /* ---------- Area contenuto principale ---------- */
 .content {
-  padding: 0 20px 48px;
+  padding: 0 20px 84px;
   max-width: 680px;
   margin: 0 auto;
 }
@@ -378,6 +378,100 @@ body::before {
   padding: 1px 6px;
   font-weight: 700;
 }
+
+/* ---------- Bottom navigation ---------- */
+.bottom-nav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 64px;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -4px 20px rgba(32,56,61,0.08);
+  display: flex;
+  z-index: 100;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.bnav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.18s;
+  padding: 6px 0 8px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bnav-item:active { transform: scale(0.92); }
+
+.bnav-icon {
+  font-size: 22px;
+  line-height: 1;
+  transition: transform 0.18s;
+}
+
+.bnav-item.active .bnav-icon { transform: translateY(-2px); }
+
+.bnav-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ink3);
+  letter-spacing: 0.3px;
+  transition: color 0.18s;
+}
+
+.bnav-item.active .bnav-label { color: var(--sage-dark); }
+
+.bnav-item.active::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 25%; right: 25%;
+  height: 3px;
+  background: var(--sage);
+  border-radius: 0 0 4px 4px;
+}
+
+.bnav-badge {
+  position: absolute;
+  top: 4px; right: calc(50% - 22px);
+  background: var(--terra);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 1px 5px;
+  min-width: 16px;
+  text-align: center;
+}
+
+/* ---------- Hero budget toggle ---------- */
+.hero-budget-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-budget-toggle {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  transition: all 0.18s;
+  font-family: 'Outfit', sans-serif;
+}
+
+.hero-budget-toggle:hover { background: rgba(255,255,255,0.18); color: #fff; }
+.hero-budget-toggle.open  { background: var(--terra); border-color: var(--terra); color: #fff; }
 
 /* ---------- Panel contenuto (1 visibile alla volta) ---------- */
 .panel         { display: none; }
