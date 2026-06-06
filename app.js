@@ -841,3 +841,191 @@ function renderAll() {
 renderAll();
 loadFromDB();
 setInterval(loadFromDB, 15000);
+
+/* ============================================================
+   16. SCANSIONE SCONTRINO CON AI
+   ============================================================ */
+
+// URL della Edge Function Supabase
+const SCAN_URL = `${SB_URL}/functions/v1/scan-receipt`;
+
+// Dati scontrino corrente in anteprima
+let receiptPreview = null;
+
+/** Apre il selettore fotocamera / galleria */
+function openReceiptScanner() {
+  document.getElementById('receiptInput').click();
+}
+
+/** Gestisce la foto selezionata — la converte in base64 e la manda alla Edge Function */
+async function handleReceiptPhoto(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  // Reset input (permette di ri-selezionare lo stesso file)
+  event.target.value = '';
+
+  // Mostra anteprima foto e stato "analisi in corso"
+  const reader = new FileReader();
+  reader.onload = async (e) => {
+    const base64Full  = e.target.result;                          // "data:image/jpeg;base64,/9j/..."
+    const base64Data  = base64Full.split(',')[1];                 // solo la parte base64
+    const mediaType   = file.type || 'image/jpeg';
+
+    // Mostra modal con foto e spinner
+    document.getElementById('receiptImgPreview').src = base64Full;
+    document.getElementById('receiptScanResult').innerHTML = '';
+    document.getElementById('receiptLoading').style.display = 'flex';
+    document.getElementById('receiptActions').style.display = 'none';
+    openModal('modalReceipt');
+
+    try {
+      const res = await fetch(SCAN_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SB_KEY,
+          'Authorization': `Bearer ${SB_KEY}`
+        },
+        body: JSON.stringify({ image: base64Data, mediaType })
+      });
+
+      if (!res.ok) throw new Error(`Errore server: ${res.status}`);
+      const data = await res.json();
+      if (data.error) throw new Error(data.error);
+
+      receiptPreview = data;
+      renderReceiptPreview(data);
+
+    } catch (err) {
+      document.getElementById('receiptLoading').style.display = 'none';
+      document.getElementById('receiptScanResult').innerHTML = `
+        <div class="receipt-error">
+          <div style="font-size:32px;margin-bottom:8px">⚠️</div>
+          <div style="font-weight:600;margin-bottom:4px">Errore scansione</div>
+          <div style="font-size:13px;color:var(--ink3)">${err.message}</div>
+        </div>`;
+    }
+  };
+
+  reader.readAsDataURL(file);
+}
+
+/** Mostra il risultato della scansione nella modal */
+function renderReceiptPreview(data) {
+  document.getElementById('receiptLoading').style.display = 'none';
+
+  const articoli = data.articoli || [];
+  const totale   = data.totale   || 0;
+
+  let html = '';
+
+  // Info supermercato e data
+  if (data.supermercato || data.data) {
+    html += `<div class="receipt-meta">`;
+    if (data.supermercato) html += `<span>🏪 ${data.supermercato}</span>`;
+    if (data.data)         html += `<span>📅 ${formatReceiptDate(data.data)}</span>`;
+    html += `</div>`;
+  }
+
+  // Articoli estratti
+  if (articoli.length) {
+    html += `<div class="receipt-items-label">Articoli trovati (${articoli.length})</div>`;
+    articoli.forEach((art, i) => {
+      html += `
+        <div class="receipt-item" id="ritem-${i}">
+          <div class="receipt-item-info">
+            <div class="receipt-item-name">${art.nome}</div>
+            <div class="receipt-item-meta">
+              <span class="tag">${CAT_EMOJI[art.categoria] || '📦'} ${art.categoria || 'Altro'}</span>
+              <span class="tag muted">x${art.quantita || 1}</span>
+            </div>
+          </div>
+          <div class="receipt-item-price">${art.prezzo > 0 ? fmt(art.prezzo) : '—'}</div>
+          <button class="item-del" onclick="removeReceiptItem(${i})" title="Rimuovi">×</button>
+        </div>`;
+    });
+  } else {
+    html += `<div class="receipt-empty">Nessun articolo riconosciuto</div>`;
+  }
+
+  // Totale
+  html += `
+    <div class="receipt-total">
+      <span>Totale scontrino</span>
+      <span class="receipt-total-val">${fmt(totale)}</span>
+    </div>`;
+
+  // Note eventuali
+  if (data.note) {
+    html += `<div class="receipt-note">📝 ${data.note}</div>`;
+  }
+
+  document.getElementById('receiptScanResult').innerHTML = html;
+  document.getElementById('receiptActions').style.display = 'flex';
+}
+
+/** Rimuove un articolo dall'anteprima prima di confermare */
+function removeReceiptItem(index) {
+  if (!receiptPreview) return;
+  receiptPreview.articoli.splice(index, 1);
+  renderReceiptPreview(receiptPreview);
+}
+
+/** Formatta una data ISO in formato italiano */
+function formatReceiptDate(iso) {
+  try {
+    return new Date(iso).toLocaleDateString('it-IT', { day: '2-digit', month: 'short', year: 'numeric' });
+  } catch { return iso; }
+}
+
+/** Salva gli articoli dello scontrino come spesa nello storico */
+async function confirmReceipt() {
+  if (!receiptPreview || !receiptPreview.articoli?.length) {
+    toast('Nessun articolo da salvare');
+    return;
+  }
+
+  const articoli  = receiptPreview.articoli;
+  const totale    = receiptPreview.totale || articoli.reduce((s, a) => s + (a.prezzo || 0), 0);
+  const sid       = uid();
+  const date      = receiptPreview.data ? new Date(receiptPreview.data).toISOString() : new Date().toISOString();
+  const supermarket = receiptPreview.supermercato || '';
+
+  // Aggiunge allo storico locale
+  const histItems = articoli.map(a => ({
+    id:    uid(),
+    name:  a.nome,
+    qty:   String(a.quantita || 1),
+    price: +a.prezzo || 0,
+    cat:   a.categoria || 'Altro',
+    who:   'Entrambi'
+  }));
+
+  state.history.push({ id: sid, date, items: histItems, total: totale, supermercato: supermarket });
+  closeModal('modalReceipt');
+  receiptPreview = null;
+  renderAll();
+  toast(`✅ Scontrino salvato: ${fmt(totale)}`);
+
+  // Salva su Supabase
+  try {
+    const rows = histItems.map(i => ({
+      id:          i.id,
+      nome:        i.name,
+      quantita:    i.qty,
+      prezzo:      i.price,
+      categoria:   i.cat,
+      chi:         i.who,
+      spuntato:    true,
+      data:        date,
+      tipo:        'history',
+      sessione_id: sid,
+      supermercato: supermarket,
+      scontrino_img: 'ai-scan'
+    }));
+    await sbInsert(rows);
+  } catch {
+    toast('⚠️ Salvato in locale, errore sync DB');
+  }
+}
