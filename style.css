@@ -817,3 +817,202 @@ select.field  { cursor: pointer; }
   from { opacity: 0; }
   to   { opacity: 1; }
 }
+
+/* ============================================================
+   SCANSIONE SCONTRINO AI
+   ============================================================ */
+
+/* Bottone principale scansione */
+.btn-scan-receipt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--ink) 0%, #2d5258 100%);
+  color: #fff;
+  border: none;
+  border-radius: var(--r-sm);
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: all 0.2s;
+  letter-spacing: 0.3px;
+}
+
+.btn-scan-receipt:hover  { transform: translateY(-1px); box-shadow: var(--shadow-lg); }
+.btn-scan-receipt:active { transform: scale(0.98); }
+
+.btn-scan-icon { font-size: 20px; }
+
+/* Modal scontrino — più alta per contenere foto + risultati */
+.modal-receipt {
+  max-height: 90vh;
+  overflow-y: auto;
+  padding-bottom: 20px;
+}
+
+/* Miniatura foto scontrino */
+.receipt-img-wrap {
+  width: 100%;
+  max-height: 160px;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  margin-bottom: 16px;
+  background: var(--surface-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.receipt-img-wrap img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: var(--r-sm);
+}
+
+/* Spinner analisi */
+.receipt-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 0;
+  gap: 14px;
+}
+
+.receipt-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--line);
+  border-top-color: var(--sage);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.receipt-loading-text {
+  font-size: 14px;
+  color: var(--ink2);
+  font-weight: 500;
+}
+
+/* Info supermercato / data */
+.receipt-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  background: var(--surface-soft);
+  border-radius: var(--r-sm);
+  border: 1px solid var(--line);
+}
+
+.receipt-meta span {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink2);
+}
+
+/* Label articoli */
+.receipt-items-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--ink3);
+  margin-bottom: 10px;
+  margin-top: 4px;
+}
+
+/* Singolo articolo estratto */
+.receipt-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.receipt-item-info { flex: 1; min-width: 0; }
+
+.receipt-item-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.receipt-item-meta {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.receipt-item-price {
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--terra);
+  flex-shrink: 0;
+}
+
+/* Totale finale */
+.receipt-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: linear-gradient(135deg, var(--ink) 0%, #2d5258 100%);
+  border-radius: var(--r-sm);
+  color: #fff;
+}
+
+.receipt-total span:first-child {
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0.75;
+}
+
+.receipt-total-val {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #7fd4c0;
+}
+
+/* Note scontrino */
+.receipt-note {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--ink3);
+  padding: 8px 12px;
+  background: var(--surface-soft);
+  border-radius: 10px;
+  line-height: 1.4;
+}
+
+/* Stato vuoto / errore */
+.receipt-empty {
+  text-align: center;
+  padding: 20px;
+  color: var(--ink3);
+  font-size: 14px;
+}
+
+.receipt-error {
+  text-align: center;
+  padding: 24px 16px;
+  color: var(--ink2);
+}
