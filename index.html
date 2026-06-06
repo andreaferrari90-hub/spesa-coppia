@@ -43,7 +43,7 @@
 
     <div class="hero-top">
       <div>
-        <div class="hero-label">Spesoooooo nel mese</div>
+        <div class="hero-label">Speso nel mese</div>
         <div class="hero-spent" id="heroSpent">€0,00</div>
         <div class="hero-budget-tag" id="heroBudgetTag">Budget non impostato</div>
       </div>
@@ -80,6 +80,14 @@
       <div class="mini-stat"><div class="v" id="msMedia">€0</div><div class="l">Media spesa</div></div>
       <div class="mini-stat"><div class="v" id="msDaComprare">0</div><div class="l">Da comprare</div></div>
     </div>
+
+    <!-- Bottone scansione scontrino -->
+    <button class="btn-scan-receipt" onclick="openReceiptScanner()">
+      <span class="btn-scan-icon">📷</span>
+      <span>Scansiona scontrino</span>
+    </button>
+    <input type="file" id="receiptInput" accept="image/*" capture="environment"
+           style="display:none" onchange="handleReceiptPhoto(event)">
 
     <!-- Tab liste multiple -->
     <div class="list-tabs" id="listTabs"></div>
@@ -225,6 +233,26 @@
     <div class="modal-actions">
       <button class="btn btn-ghost"   onclick="closeModal('modalList')">Annulla</button>
       <button class="btn btn-primary" onclick="addList()">Crea lista</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Modal: anteprima scontrino AI ─────────────────────── -->
+<div class="modal-bg" id="modalReceipt">
+  <div class="modal modal-receipt">
+    <div class="modal-handle"></div>
+    <div class="modal-title">📷 Scontrino scansionato</div>
+    <div class="receipt-img-wrap">
+      <img id="receiptImgPreview" src="" alt="Scontrino">
+    </div>
+    <div id="receiptLoading" class="receipt-loading">
+      <div class="receipt-spinner"></div>
+      <div class="receipt-loading-text">Analisi con AI in corso…</div>
+    </div>
+    <div id="receiptScanResult"></div>
+    <div id="receiptActions" class="modal-actions" style="display:none">
+      <button class="btn btn-ghost"   onclick="closeModal('modalReceipt')">Annulla</button>
+      <button class="btn btn-primary" onclick="confirmReceipt()">✅ Salva spesa</button>
     </div>
   </div>
 </div>
