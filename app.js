@@ -861,19 +861,17 @@ function openReceiptScanner() {
 async function handleReceiptPhoto(event) {
   const file = event.target.files[0];
   if (!file) return;
-
-  // Reset input (permette di ri-selezionare lo stesso file)
   event.target.value = '';
 
-  // Mostra anteprima foto e stato "analisi in corso"
   const reader = new FileReader();
   reader.onload = async (e) => {
-    const base64Full  = e.target.result;                          // "data:image/jpeg;base64,/9j/..."
-    const base64Data  = base64Full.split(',')[1];                 // solo la parte base64
-    const mediaType   = file.type || 'image/jpeg';
+    const originalSrc = e.target.result;
 
-    // Mostra modal con foto e spinner
-    document.getElementById('receiptImgPreview').src = base64Full;
+    // Ridimensiona l'immagine prima di inviarla (max 1200px)
+    const base64Data = await resizeImage(originalSrc, 1200);
+    const mediaType  = file.type || 'image/jpeg';
+
+    document.getElementById('receiptImgPreview').src = originalSrc;
     document.getElementById('receiptScanResult').innerHTML = '';
     document.getElementById('receiptLoading').style.display = 'flex';
     document.getElementById('receiptActions').style.display = 'none';
@@ -890,7 +888,11 @@ async function handleReceiptPhoto(event) {
         body: JSON.stringify({ image: base64Data, mediaType })
       });
 
-      if (!res.ok) throw new Error(`Errore server: ${res.status}`);
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.error || `Errore server: ${res.status}`);
+      }
+
       const data = await res.json();
       if (data.error) throw new Error(data.error);
 
@@ -905,11 +907,33 @@ async function handleReceiptPhoto(event) {
           <div style="font-weight:600;margin-bottom:4px">Errore scansione</div>
           <div style="font-size:13px;color:var(--ink3)">${err.message}</div>
         </div>`;
+      document.getElementById('receiptActions').style.display = 'flex';
     }
   };
-
   reader.readAsDataURL(file);
 }
+
+/** Ridimensiona immagine base64 a maxSize px sul lato lungo */
+function resizeImage(base64src, maxSize = 1200) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      let { width, height } = img;
+      if (width > maxSize || height > maxSize) {
+        if (width > height) { height = Math.round(height * maxSize / width);  width = maxSize; }
+        else                { width  = Math.round(width  * maxSize / height); height = maxSize; }
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = width; canvas.height = height;
+      canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+      // Esporta come JPEG qualità 85%
+      const resized = canvas.toDataURL('image/jpeg', 0.85);
+      resolve(resized.split(',')[1]);
+    };
+    img.src = base64src;
+  });
+}
+
 
 /** Mostra il risultato della scansione nella modal */
 function renderReceiptPreview(data) {
